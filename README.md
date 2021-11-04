@@ -1,2 +1,2 @@
-# dashbuilder-components
-Components for Dashbuilder
+# KIE Dashboards
+Dashboards for Kie components
