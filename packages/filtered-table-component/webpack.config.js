@@ -25,7 +25,17 @@ module.exports = async (env, argv) => {
     { from: "./static/index.html", to: "index.html" },
     { from: "./static/", to: "index.css" },
     { from: "./static/manifest.json", to: "manifest.json" },
-    { from: "../../node_modules/@patternfly/patternfly/patternfly.min.css", to: "patternfly.min.css" }
+    // main
+    { from: "../../node_modules/@patternfly/patternfly/patternfly.min.css", to: "patternfly.min.css" },
+    // fonts
+    {
+      from: "../../node_modules/@patternfly/react-core/dist/styles/assets/fonts/RedHatText/RedHatText-Regular.woff2",
+      to: "assets/fonts/RedHatText/RedHatText-Regular.woff2"
+    },
+    {
+      from: "../../node_modules/@patternfly/react-core/dist/styles/assets/fonts/RedHatText/RedHatText-Medium.woff2",
+      to: "assets/fonts/RedHatText/RedHatText-Medium.woff2"
+    }
   ];
 
   if (process.env.WEBPACK_DEV_SERVER) {
@@ -39,9 +49,9 @@ module.exports = async (env, argv) => {
     },
     optimization: {
       usedExports: true,
-      minimize: true,
+      minimize: true
     },
-    mode: 'production',
+    mode: "production",
     plugins: [new CopyPlugin(copyResources)],
     devServer: {
       historyApiFallback: false,

@@ -35,7 +35,6 @@ export interface Alert {
 }
 
 interface Props {
-  caption: string;
   columns: string[];
   rows: any[][];
   alerts?: Map<number, Alert>;
@@ -94,7 +93,7 @@ export const FilteredTable = (props: Props) => {
       });
     }
     return filteredRows;
-  }, [search, activeSortIndex, activeSortDirection, page, perPage, props]);
+  }, [search, activeSortIndex, activeSortDirection, props]);
 
   const onSort = useCallback(
     (event: any, index: any, direction: any) => {
@@ -135,7 +134,7 @@ export const FilteredTable = (props: Props) => {
         <FlexItem>
           {" "}
           <SearchInput
-            placeholder="Filter"
+            placeholder="Filter"            
             value={search}
             onChange={(v:any) => onSearch(v as string)}
             onClear={() => onSearch("")}
@@ -143,8 +142,7 @@ export const FilteredTable = (props: Props) => {
         </FlexItem>
         <FlexItem align={{ default: "alignRight" }}>
           <Pagination
-            disabled={search === ""}
-            itemCount={props.rows.length}
+            itemCount={rows.length}
             perPage={perPage}
             page={page}
             onSetPage={(evt, _page) => setPage(_page)}

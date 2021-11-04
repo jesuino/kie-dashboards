@@ -66,11 +66,9 @@ export function FilteredTableComponent(props: Props) {
     return dataset?.columns.map(c => c.settings.columnName) || [];
   }, [dataset]);
 
-  const caption = "Business Process Instances";
-
   return (
     <>
-      <FilteredTable columns={columns} rows={rows} caption={caption} alerts={alerts} />
+      <FilteredTable columns={columns} rows={rows} alerts={alerts} />
     </>
   );
 }

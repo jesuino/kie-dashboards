@@ -21,8 +21,6 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const { stylePaths } = require("./stylePaths");
 
-const BG_IMAGES_DIRNAME = "bgimages";
-
 module.exports = {
   mode: "production",
   devtool: "inline-source-map",
@@ -69,11 +67,8 @@ module.exports = {
         // only process modules with this loader
         // if they live under a 'fonts' or 'pficon' directory
         include: [
-          path.resolve(__dirname, "node_modules/patternfly/dist/fonts"),
-          path.resolve(__dirname, "node_modules/@patternfly/react-core/dist/styles/assets/fonts"),
-          path.resolve(__dirname, "node_modules/@patternfly/react-core/dist/styles/assets/pficon"),
-          path.resolve(__dirname, "node_modules/@patternfly/patternfly/assets/fonts"),
-          path.resolve(__dirname, "node_modules/@patternfly/patternfly/assets/pficon")
+          path.resolve(__dirname, "node_modules/@patternfly/patternfly/assets/fonts/RedHatDisplay"),
+          path.resolve(__dirname, "node_modules/@patternfly/patternfly/assets/fonts/overpass-mono-webfont"),
         ],
         use: {
           loader: "file-loader",
@@ -87,34 +82,9 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        include: input => input.indexOf("background-filter.svg") > 1,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 5000,
-              outputPath: "svgs",
-              name: "[name].[ext]"
-            }
-          }
-        ]
-      },
-      {
-        test: /\.svg$/,
-        // only process SVG modules with this loader if they live under a 'bgimages' directory
-        // this is primarily useful when applying a CSS background using an SVG
-        include: input => input.indexOf(BG_IMAGES_DIRNAME) > -1,
-        use: {
-          loader: "svg-url-loader",
-          options: {}
-        }
-      },
-      {
-        test: /\.svg$/,
         // only process SVG modules with this loader when they don't live under a 'bgimages',
         // 'fonts', or 'pficon' directory, those are handled with other loaders
         include: input =>
-          input.indexOf(BG_IMAGES_DIRNAME) === -1 &&
           input.indexOf("fonts") === -1 &&
           input.indexOf("background-filter") === -1 &&
           input.indexOf("pficon") === -1,
@@ -148,9 +118,7 @@ module.exports = {
           {
             loader: "url-loader",
             options: {
-              limit: 5000,
-              outputPath: "images",
-              name: "[name].[ext]"
+             
             }
           }
         ]
