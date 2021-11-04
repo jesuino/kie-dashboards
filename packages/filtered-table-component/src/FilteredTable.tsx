@@ -137,8 +137,8 @@ export const FilteredTable = (props: Props) => {
           <SearchInput
             placeholder="Filter"
             value={search}
-            onChange={(v, evt) => onSearch(v)}
-            onClear={evt => onSearch("")}
+            onChange={(v:any) => onSearch(v as string)}
+            onClear={() => onSearch("")}
           />
         </FlexItem>
         <FlexItem align={{ default: "alignRight" }}>

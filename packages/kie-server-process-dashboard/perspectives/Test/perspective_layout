@@ -1,0 +1,57 @@
+{
+  "version": 3,
+  "name": "Test",
+  "style": "FLUID",
+  "layoutProperties": {},
+  "rows": [
+    {
+      "height": "12",
+      "properties": {},
+      "layoutColumns": [
+        {
+          "span": "12",
+          "height": "12",
+          "properties": {
+            "margin-bottom": "20px"
+          },
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.uberfire.ext.plugin.client.perspective.editor.layout.editor.HTMLLayoutDragComponent",
+              "properties": {
+                "margin-bottom": "20px",
+                "HTML_CODE": "\u003ch1\u003e\u003cb\u003eCountries GDP\u003c/b\u003e\u003c/h1\u003e"
+              },
+              "parts": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "height": "12",
+      "properties": {},
+      "layoutColumns": [
+        {
+          "span": "12",
+          "height": "12",
+          "properties": {
+            "margin-left": "10px"
+          },
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
+              "properties": {
+                "margin-left": "10px",
+                "componentId": "filtered-table",
+                "json": "{\n  \"uuid\": \"gwt-uid-283\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"filtered-table\",\n  \"filtered-table\": {\n    \"alertColumn\": \"0\",\n    \"alertDanger\": \"China\",\n    \"alertGood\": \"United States\",\n    \"alertGreat\": \"Brazil\"\n  },\n  \"chart\": {\n    \"width\": \"1200\",\n    \"height\": \"600\"\n  },\n  \"dataSet\": {\n    \"column.0\": {\n      \"id\": \"Country\",\n      \"type\": \"LABEL\",\n      \"values\": [\n        \"United States\",\n        \"China\",\n        \"Japan\",\n        \"Germany\",\n        \"United Kingdom\",\n        \"France\",\n        \"Brazil\"\n      ]\n    },\n    \"column.1\": {\n      \"id\": \"GDP 2013\",\n      \"type\": \"NUMBER\",\n      \"values\": [\n        \"16768100\",\n        \"9240270\",\n        \"4919563\",\n        \"3730261\",\n        \"2678455\",\n        \"2806428\",\n        \"2245673\"\n      ]\n    },\n    \"column.2\": {\n      \"id\": \"GDP 2014\",\n      \"type\": \"NUMBER\",\n      \"values\": [\n        \"17418925\",\n        \"1038080\",\n        \"4616335\",\n        \"3859547\",\n        \"2945146\",\n        \"2846889\",\n        \"2353025\"\n      ]\n    }\n  },\n  \"columns\": [\n    {\n      \"id\": \"Country\",\n      \"name\": \"Country\"\n    }\n  ]\n}"
+              },
+              "parts": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
