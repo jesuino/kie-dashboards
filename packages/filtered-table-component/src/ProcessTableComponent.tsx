@@ -24,10 +24,20 @@ interface Props {
 }
 export function FilteredTableComponent(props: Props) {
   const [dataset, setDataset] = useState<DataSet>();
+  const alerts = new Map<number, Alert>();
 
   useEffect(() => {
     props.controller.setOnInit((params: Map<string, any>) => {
       // init
+      const columnStr = params.get("alertColumn");
+
+      if (columnStr && columnStr !== "") {
+        alerts.set(+columnStr, {
+          danger: params.get("alertDanger"),
+          good: params.get("alertGood"),
+          great: params.get("alertGreat")
+        });
+      }
     });
     props.controller.setOnDataSet((_dataset: DataSet) => {
       setDataset(_dataset);
@@ -55,14 +65,6 @@ export function FilteredTableComponent(props: Props) {
   const columns = useMemo(() => {
     return dataset?.columns.map(c => c.settings.columnName) || [];
   }, [dataset]);
-
-  const alerts = new Map<number, Alert>();
-
-  alerts.set(2, {
-    danger: "Aborted",
-    good: "Active",
-    great: "Completed"
-  });
 
   const caption = "Business Process Instances";
 

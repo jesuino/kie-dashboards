@@ -2,5 +2,31 @@
   "name": "Table",
   "noData": true,
   "category": "Patternfly 4",
-  "icon": "pficon pficon-messages"
+  "icon": "pficon pficon-messages",
+  "parameters": [
+    {
+      "name": "alertColumn",
+      "type": "number",
+      "defaultValue": "",
+      "label": "Column"
+    },
+    {
+      "name": "alertDanger",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Danger"
+    },
+    {
+      "name": "alertGood",
+      "type": "text",
+      "defaultValue": "",
+      "label": "G0ood"
+    },
+    {
+      "name": "alertGreat",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Great"
+    }
+  ]
 }

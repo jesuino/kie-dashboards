@@ -1,8 +1,16 @@
 {
   "init": [
     {
-      "key": "name",
-      "value": "John"
+      "key": "alertColumn",
+      "value": "0"
+    },
+    {
+      "key": "alertDanger",
+      "value": "Russia"
+    },
+    {
+      "key": "alertGreat",
+      "value": "Canada"
     }
   ],
   "dataSet": {
