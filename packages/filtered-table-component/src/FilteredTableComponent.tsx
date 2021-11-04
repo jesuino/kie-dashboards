@@ -17,7 +17,7 @@
 import * as React from "react";
 import { ColumnType, ComponentController, DataSet } from "@dashbuilder-js/component-api";
 import { useState, useEffect, useMemo } from "react";
-import { Alert, FilteredTable } from "./ProcessTable";
+import { Alert, FilteredTable } from "./FilteredTable";
 
 interface Props {
   controller: ComponentController;
@@ -45,21 +45,21 @@ export function FilteredTableComponent(props: Props) {
   }, [props.controller]);
 
   const rows = useMemo(() => {
-    const rows: any[][] = [];
+    const _rows: any[][] = [];
     dataset?.data.forEach((row, i) => {
       const values: any[] = [];
       row.forEach((v, j) => {
         const column = dataset?.columns[j];
-        if (!v || v == "") {
+        if (!v || v === "") {
           values.push(column.settings.emptyTemplate);
         } else {
-          const value = column.type == ColumnType.NUMBER ? +v : v;
+          const value = column.type === ColumnType.NUMBER ? +v : v;
           values.push(value);
         }
       });
-      rows.push(values);
+      _rows.push(values);
     });
-    return rows;
+    return _rows;
   }, [dataset]);
 
   const columns = useMemo(() => {

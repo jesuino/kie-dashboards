@@ -63,13 +63,12 @@ export const FilteredTable = (props: Props) => {
 
     // Filter
     if (search !== "") {
-      for (let i = 0; i < props.rows.length; i++) {
-        const row = props.rows[i];
-        var value = row.join().toLowerCase();
+      props.rows.forEach(row => {
+        const value = row.join().toLowerCase();
         if (value.indexOf(search.toLowerCase()) !== -1) {
           filteredRows.push(row);
         }
-      }
+      });
     } else {
       filteredRows = props.rows;
     }
@@ -94,7 +93,7 @@ export const FilteredTable = (props: Props) => {
         }
       });
     }
-    return filteredRows
+    return filteredRows;
   }, [search, activeSortIndex, activeSortDirection, page, perPage, props]);
 
   const onSort = useCallback(
@@ -106,8 +105,8 @@ export const FilteredTable = (props: Props) => {
   );
 
   const onSearch = useCallback(
-    (search: string) => {
-      setSearch(search);
+    (_search: string) => {
+      setSearch(_search);
       setPage(DEFAULT_PAGE);
       setPerPage(DEFAULT_PER_PAGE);
     },
@@ -148,8 +147,8 @@ export const FilteredTable = (props: Props) => {
             itemCount={props.rows.length}
             perPage={perPage}
             page={page}
-            onSetPage={(evt, page) => setPage(page)}
-            onPerPageSelect={(evt, perPage) => setPerPage(perPage)}
+            onSetPage={(evt, _page) => setPage(_page)}
+            onPerPageSelect={(evt, _perPage) => setPerPage(_perPage)}
             widgetId="pagination-options-menu-top"
           />
         </FlexItem>
@@ -177,7 +176,7 @@ export const FilteredTable = (props: Props) => {
           </Tr>
         </Thead>
         <Tbody>
-          {rows?.slice((page - 1) * perPage, ((page - 1) * perPage) + perPage).map((row, rowIndex) => (
+          {rows?.slice((page - 1) * perPage, (page - 1) * perPage + perPage).map((row, rowIndex) => (
             <Tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
                 <Td

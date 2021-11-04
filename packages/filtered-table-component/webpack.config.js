@@ -22,10 +22,10 @@ const common = require("../../webpack.common.config");
 module.exports = async (env, argv) => {
   let entryPoint = "./src/index.tsx";
   const copyResources = [
-    { from: "./static/index.html", to: "./index.html" },
-    { from: "./static/index.css", to: "./css/index.css" },
-    { from: "./static/manifest.json", to: "./manifest.json" },
-    { from: "../../node_modules/@patternfly/patternfly/patternfly.min.css", to: "./css/patternfly.min.css" }
+    { from: "./static/index.html", to: "index.html" },
+    { from: "./static/index.css", to: "css/index.css" },
+    { from: "./static/manifest.json", to: "manifest.json" },
+    { from: "../../node_modules/@patternfly/patternfly/patternfly.min.css", to: "css/patternfly.min.css" }
   ];
 
   if (process.env.WEBPACK_DEV_SERVER) {

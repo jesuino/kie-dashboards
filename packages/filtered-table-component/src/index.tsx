@@ -17,7 +17,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { ComponentApi } from "@dashbuilder-js/component-api";
-import { FilteredTableComponent } from "./ProcessTableComponent";
+import { FilteredTableComponent } from "./FilteredTableComponent";
 
 const api = new ComponentApi();
 
