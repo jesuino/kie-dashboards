@@ -1,0 +1,27 @@
+{
+  "uuid": "a057840e-c918-414b-a750-053bba4b7bab",
+  "name": "values",
+  "provider": "External",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dynamic": false,
+  "url": "file:///home/wsiqueir/projects/kie-dashboards/packages/kie-server-process-dashboard/stats.json",
+  "columns": [
+    {
+      "id": "Column 0",
+      "type": "number"
+    },
+    {
+      "id": "Column 1",
+      "type": "number"
+    },
+    {
+      "id": "Column 2",
+      "type": "number"
+    }
+  ]
+}

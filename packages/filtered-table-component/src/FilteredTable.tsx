@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import * as React from "react";
-import { TableComposable, Thead, Tbody, Tr, Th, Td, Caption } from "@patternfly/react-table";
+import { TableComposable, Thead, Tbody, Tr, Th, Td } from "@patternfly/react-table";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Flex, FlexItem, Pagination, SearchInput } from "@patternfly/react-core";

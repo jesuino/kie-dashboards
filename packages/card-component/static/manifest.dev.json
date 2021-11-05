@@ -1,0 +1,34 @@
+{
+  "init": [
+    {
+      "key": "color",
+      "value": "blue"
+    },
+    {
+      "key": "title",
+      "value": "Hello!"
+    },
+    {
+      "key": "subtitle",
+      "value": "Hello World!"
+    }
+  ],
+  "dataSet": {
+    "columns": [
+      {
+        "name": "Total",
+        "type": "LABEL",
+        "settings": {
+          "columnId": "Total",
+          "columnName": "Total",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": null
+        }
+      }
+    ],
+    "data": [
+      ["1200"]
+    ]
+  }
+}

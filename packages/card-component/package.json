@@ -1,5 +1,5 @@
 {
-  "name": "@dashbuilder-component/filtered-table-component",
+  "name": "@kie-dashboards/card-component",
   "version": "0.1.0",
   "description": "",
   "license": "Apache-2.0",
@@ -12,7 +12,7 @@
     "lint": "tslint -c ../../tslint.json 'src/**/*.{ts,tsx,js,jsx}'",
     "test": "jest --silent --verbose --passWithNoTests",
     "test:clearCache": "jest --clearCache",
-    "build:fast": "rm -rf dist && webpack && rm -rf ../components/filtered-table &&  cp -r dist/ ../components/filtered-table",
+    "build:fast": "rm -rf dist && webpack && rm -rf ../components/card && cp -r dist/ ../components/card",
     "build:prod": "yarn run lint && yarn test && yarn run build:fast",
     "start": "webpack-dev-server -d --host 0.0.0.0 --env WEBPACK_DEV_SERVER=true"
   },

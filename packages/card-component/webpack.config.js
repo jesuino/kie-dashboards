@@ -23,7 +23,6 @@ const common = require("../../webpack.common.config");
 module.exports = async (env, argv) => {
   let entryPoint = "./src/index.tsx";
   const copyResources = [
-    //{ from: "./static/index.html", to: "index.html" },
     { from: "./static/manifest.json", to: "manifest.json" },
     // main
     { from: "../../node_modules/@patternfly/patternfly/patternfly.min.css", to: "patternfly.min.css" },
@@ -35,6 +34,10 @@ module.exports = async (env, argv) => {
     {
       from: "../../node_modules/@patternfly/react-core/dist/styles/assets/fonts/RedHatText/RedHatText-Medium.woff2",
       to: "assets/fonts/RedHatText/RedHatText-Medium.woff2"
+    },
+    {
+      from: "../../node_modules/@patternfly/react-core/dist/styles/assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff2",
+      to: "assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff2"
     }
   ];
 
@@ -46,6 +49,10 @@ module.exports = async (env, argv) => {
   return merge(common, {
     entry: {
       index: entryPoint
+    },
+    optimization: {
+      usedExports: true,
+      minimize: true
     },
     mode: "production",
     plugins: [

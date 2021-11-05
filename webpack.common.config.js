@@ -30,6 +30,8 @@ module.exports = {
     filename: "[name].js"
   },
   optimization: {
+    usedExports: true,
+    minimize: true,
     minimizer: [
       new TerserJSPlugin({}),
       new CssMinimizerPlugin({
@@ -68,7 +70,7 @@ module.exports = {
         // if they live under a 'fonts' or 'pficon' directory
         include: [
           path.resolve(__dirname, "node_modules/@patternfly/patternfly/assets/fonts/RedHatDisplay"),
-          path.resolve(__dirname, "node_modules/@patternfly/patternfly/assets/fonts/overpass-mono-webfont"),
+          path.resolve(__dirname, "node_modules/@patternfly/patternfly/assets/fonts/overpass-mono-webfont")
         ],
         use: {
           loader: "file-loader",
@@ -85,9 +87,7 @@ module.exports = {
         // only process SVG modules with this loader when they don't live under a 'bgimages',
         // 'fonts', or 'pficon' directory, those are handled with other loaders
         include: input =>
-          input.indexOf("fonts") === -1 &&
-          input.indexOf("background-filter") === -1 &&
-          input.indexOf("pficon") === -1,
+          input.indexOf("fonts") === -1 && input.indexOf("background-filter") === -1 && input.indexOf("pficon") === -1,
         use: {
           loader: "raw-loader",
           options: {}
@@ -117,9 +117,7 @@ module.exports = {
         use: [
           {
             loader: "url-loader",
-            options: {
-             
-            }
+            options: {}
           }
         ]
       },
