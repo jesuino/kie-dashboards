@@ -1,0 +1,90 @@
+{
+  "uuid": "735e6e45-1233-4bbf-8531-e69a394a53e9",
+  "name": "Process Instances",
+  "provider": "REMOTE",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dataSource": "${org.kie.server.persistence.ds}",
+  "dbSQL": "select log.processInstanceId, log.processId, log.start_date, log.end_date, log.status, log.parentProcessInstanceId, log.outcome, log.duration, log.user_identity, log.processVersion, log.processName, log.correlationKey, log.externalId, log.processInstanceDescription, log.sla_due_date, log.slaCompliance, COALESCE(info.lastModificationDate, log.end_date) as lastModificationDate, (select COUNT(errInfo.id) from ExecutionErrorInfo errInfo where errInfo.PROCESS_INST_ID=log.processInstanceId and errInfo.ERROR_ACK=0) as errorCount from ProcessInstanceLog log left join ProcessInstanceInfo info on info.InstanceId=log.processInstanceId",
+  "queryTarget": "CUSTOM",
+  "serverTemplateId": "sample-server",
+  "allColumns": false,
+  "columns": [
+    {
+      "id": "ERRORCOUNT",
+      "type": "number"
+    },
+    {
+      "id": "SLACOMPLIANCE",
+      "type": "number"
+    },
+    {
+      "id": "OUTCOME",
+      "type": "label"
+    },
+    {
+      "id": "USER_IDENTITY",
+      "type": "label"
+    },
+    {
+      "id": "END_DATE",
+      "type": "date"
+    },
+    {
+      "id": "START_DATE",
+      "type": "date"
+    },
+    {
+      "id": "PROCESSNAME",
+      "type": "label"
+    },
+    {
+      "id": "PROCESSINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "STATUS",
+      "type": "number"
+    },
+    {
+      "id": "PARENTPROCESSINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "PROCESSINSTANCEDESCRIPTION",
+      "type": "label"
+    },
+    {
+      "id": "SLA_DUE_DATE",
+      "type": "date"
+    },
+    {
+      "id": "PROCESSVERSION",
+      "type": "label"
+    },
+    {
+      "id": "LASTMODIFICATIONDATE",
+      "type": "date"
+    },
+    {
+      "id": "CORRELATIONKEY",
+      "type": "label"
+    },
+    {
+      "id": "PROCESSID",
+      "type": "label"
+    },
+    {
+      "id": "DURATION",
+      "type": "number"
+    },
+    {
+      "id": "EXTERNALID",
+      "type": "label"
+    }
+  ]
+}

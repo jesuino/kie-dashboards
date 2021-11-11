@@ -39,7 +39,7 @@ interface Props {
 export const PfCard = (props: Props) => {
   return (
     <>
-      <Card isHoverable isCompact isRounded>
+      <Card isHoverable={true} isCompact={true} isRounded={true}>
         <CardBody>
           <Flex style={{ alignItems: "center", margin: "5px" }}>
             <FlexItem spacer={{ default: "spacerSm" }}>
@@ -49,11 +49,11 @@ export const PfCard = (props: Props) => {
                 </Text>
               </TextContent>
             </FlexItem>
-            {(props.title !== "" || props.subtitle !== "") && <Divider isVertical />}
+            {(props.title !== "" || props.subtitle !== "") && <Divider isVertical={true} />}
             <FlexItem>
               <TextContent>
                 {props.title !== "" && <Text component={TextVariants.h3}>{props.title}</Text>}
-                {props.subtitle !== "" && <Text component={TextVariants.small}>{props.subtitle}</Text> }
+                {props.subtitle !== "" && <Text component={TextVariants.small}>{props.subtitle}</Text>}
               </TextContent>
             </FlexItem>
           </Flex>

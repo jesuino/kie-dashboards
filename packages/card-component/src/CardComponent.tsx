@@ -15,14 +15,15 @@
  */
 
 import * as React from "react";
-import { ComponentController, DataSet } from "@dashbuilder-js/component-api";
+import { ComponentController, DataSet, FilterRequest } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
-import { PfCard } from "./PfCard";
+import { PfCard } from "../../pfcard-base/src/PfCard";
 
 const DEFAULT_COLOR = "black";
 const COLOR_PROP = "color";
 const TITLE_PROP = "title";
 const SUBTITLE_PROP = "subtitle";
+const ALLOW_EMPTY = "allowEmpty";
 
 interface Props {
   controller: ComponentController;
@@ -32,28 +33,32 @@ export function CardComponent(props: Props) {
   const [color, setColor] = useState(DEFAULT_COLOR);
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
+  const [allowEmpty, setAllowEmpty] = useState(true);
 
   useEffect(() => {
     props.controller.setOnInit((params: Map<string, any>) => {
       const _c = params.get(COLOR_PROP) || DEFAULT_COLOR;
       const _title = params.get(TITLE_PROP) || "";
       const _subtitle = params.get(SUBTITLE_PROP) || "";
-      
+      const _allowEmpty = params.get(ALLOW_EMPTY) || "";
+
       setColor(_c);
       setTitle(_title);
       setSubtitle(_subtitle);
+      setAllowEmpty(_allowEmpty.toLowerCase() === "true");
     });
+
     props.controller.setOnDataSet((_dataset: DataSet) => {
-      if (_dataset.columns.length < 1) {
-        props.controller.requireConfigurationFix("You need to provide at least one column!");
-        return;
-      }
-      if (_dataset.data.length < 1) {
+      if (!allowEmpty && _dataset.data.length < 1) {
         props.controller.requireConfigurationFix("You need to provide one data row");
         return;
       }
       props.controller.configurationOk();
-      setValue(_dataset.data[0][0] || _dataset.columns[0].settings.emptyTemplate);
+      if (_dataset) {
+        setValue(_dataset.data[0][0] || _dataset.columns[0].settings.emptyTemplate);
+      } else {
+        setValue("--");
+      }
     });
   }, [props.controller]);
 

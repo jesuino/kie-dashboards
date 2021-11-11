@@ -16,6 +16,9 @@
     "build:prod": "yarn run lint && yarn test && yarn run build:fast",
     "start": "webpack-dev-server -d --host 0.0.0.0 --env WEBPACK_DEV_SERVER=true"
   },
+  "dependencies": {
+    "@kie-dashboards/filtered-table-base": "0.0.0"
+  },
   "babel": {
     "presets": [
       "@babel/env",

@@ -17,7 +17,7 @@
 import * as React from "react";
 import { ColumnType, ComponentController, DataSet } from "@dashbuilder-js/component-api";
 import { useState, useEffect, useMemo } from "react";
-import { Alert, FilteredTable } from "./FilteredTable";
+import { Alert, FilteredTable } from "@kie-dashboards/filtered-table-base";
 
 interface Props {
   controller: ComponentController;

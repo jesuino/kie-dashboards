@@ -1,0 +1,68 @@
+{
+  "version": 3,
+  "name": "Process Instances",
+  "style": "FLUID",
+  "layoutProperties": {},
+  "rows": [
+    {
+      "height": "12",
+      "properties": {},
+      "layoutColumns": [
+        {
+          "span": "6",
+          "height": "12",
+          "properties": {},
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
+              "properties": {
+                "componentId": "card",
+                "json": "{\n  \"uuid\": \"gwt-uid-261\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card\",\n  \"card\": {\n    \"color\": \"Green\",\n    \"title\": \"Completed\",\n    \"subtitle\": \"processes instances\"\n  },\n  \"chart\": {\n    \"width\": \"300\",\n    \"height\": \"110\"\n  },\n  \"refresh\": {\n    \"interval\": \"2\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"735e6e45-1233-4bbf-8531-e69a394a53e9\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"filterOps\": [\n      {\n        \"column\": \"STATUS\",\n        \"function\": \"EQUALS_TO\",\n        \"args\": [\n          2\n        ]\n      }\n    ],\n    \"groupOps\": [\n      {\n        \"columnGroup\": {\n          \"source\": \"PROCESSNAME\",\n          \"column\": \"PROCESSNAME\",\n          \"groupStrategy\": \"DYNAMIC\",\n          \"maxIntervals\": \"15\",\n          \"emptyIntervals\": \"false\",\n          \"asc\": \"true\",\n          \"firstMonthOfYear\": \"JANUARY\",\n          \"firstDayOfWeek\": \"MONDAY\"\n        },\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSINSTANCEID\",\n            \"column\": \"PROCESSINSTANCEID\",\n            \"function\": \"COUNT\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  },\n  \"columns\": [\n    {\n      \"id\": \"PROCESSINSTANCEID\",\n      \"pattern\": \"#\"\n    }\n  ]\n}"
+              },
+              "parts": []
+            }
+          ]
+        },
+        {
+          "span": "6",
+          "height": "12",
+          "properties": {},
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
+              "properties": {
+                "componentId": "card",
+                "json": "{\n  \"uuid\": \"gwt-uid-573\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card\",\n  \"card\": {\n    \"color\": \"blue\",\n    \"title\": \"Running\",\n    \"subtitle\": \"Processes instances\",\n    \"allowEmpty\": \"true\"\n  },\n  \"chart\": {\n    \"width\": \"300\",\n    \"height\": \"110\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"735e6e45-1233-4bbf-8531-e69a394a53e9\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"filterOps\": [\n      {\n        \"column\": \"STATUS\",\n        \"function\": \"EQUALS_TO\",\n        \"args\": [\n          1\n        ]\n      }\n    ],\n    \"groupOps\": [\n      {\n        \"columnGroup\": {\n          \"source\": \"PROCESSNAME\",\n          \"column\": \"PROCESSNAME\",\n          \"groupStrategy\": \"DYNAMIC\",\n          \"maxIntervals\": \"15\",\n          \"emptyIntervals\": \"false\",\n          \"asc\": \"true\",\n          \"firstMonthOfYear\": \"JANUARY\",\n          \"firstDayOfWeek\": \"MONDAY\"\n        },\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSINSTANCEID\",\n            \"column\": \"PROCESSINSTANCEID\",\n            \"function\": \"COUNT\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
+              },
+              "parts": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "height": "12",
+      "properties": {},
+      "layoutColumns": [
+        {
+          "span": "12",
+          "height": "12",
+          "properties": {},
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
+              "properties": {
+                "componentId": "filtered-table",
+                "json": "{\n  \"uuid\": \"gwt-uid-268\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"filtered-table\",\n  \"filtered-table\": {\n    \"alertColumn\": \"5\",\n    \"alertDanger\": \"3\",\n    \"alertGood\": \"1\",\n    \"alertGreat\": \"2\"\n  },\n  \"chart\": {\n    \"width\": \"1400\",\n    \"height\": \"500\"\n  },\n  \"refresh\": {\n    \"interval\": \"2\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"735e6e45-1233-4bbf-8531-e69a394a53e9\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSINSTANCEID\",\n            \"column\": \"PROCESSINSTANCEID\"\n          },\n          {\n            \"source\": \"PROCESSNAME\",\n            \"column\": \"PROCESSNAME\"\n          },\n          {\n            \"source\": \"USER_IDENTITY\",\n            \"column\": \"USER_IDENTITY\"\n          },\n          {\n            \"source\": \"START_DATE\",\n            \"column\": \"START_DATE\"\n          },\n          {\n            \"source\": \"END_DATE\",\n            \"column\": \"END_DATE\"\n          },\n          {\n            \"source\": \"STATUS\",\n            \"column\": \"STATUS\"\n          },\n          {\n            \"source\": \"DURATION\",\n            \"column\": \"DURATION\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  },\n  \"columns\": [\n    {\n      \"id\": \"PROCESSINSTANCEID\",\n      \"name\": \"ID\",\n      \"expression\": \"value\"\n    },\n    {\n      \"id\": \"PROCESSNAME\",\n      \"name\": \"Name\",\n      \"expression\": \"value\"\n    },\n    {\n      \"id\": \"USER_IDENTITY\",\n      \"name\": \"User\",\n      \"expression\": \"value\"\n    },\n    {\n      \"id\": \"START_DATE\",\n      \"name\": \"Started\",\n      \"pattern\": \"dd/MM/yyyy HH:mm\"\n    },\n    {\n      \"id\": \"END_DATE\",\n      \"name\": \"End\",\n      \"pattern\": \"MMM dd, yyyy HH:mm\"\n    },\n    {\n      \"id\": \"STATUS\",\n      \"name\": \"Status\"\n    },\n    {\n      \"id\": \"DURATION\",\n      \"name\": \"Duration\",\n      \"expression\": \"value\"\n    }\n  ]\n}"
+              },
+              "parts": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

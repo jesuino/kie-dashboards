@@ -12,8 +12,10 @@
   "dependencies": {
     "@dashbuilder-js/component-api": "0.2.0",
     "@patternfly/patternfly": "^4.151.4",
+    "@patternfly/react-charts": "^6.21.8",
     "@patternfly/react-core": "^4.168.8",
     "@patternfly/react-table": "^4.37.8",
+    "numeral": "^2.0.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },

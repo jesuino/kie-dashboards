@@ -23,6 +23,13 @@
       "defaultValue": "",
       "label": "Subtitle",
       "category": "Card"
+    },
+    {
+      "name": "allowEmpty",
+      "type": "boolean",
+      "defaultValue": "true",
+      "label": "Allow Empty Data Sets",
+      "category": "Card"
     }
   ]
 }

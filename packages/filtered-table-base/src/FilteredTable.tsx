@@ -114,15 +114,16 @@ export const FilteredTable = (props: Props) => {
 
   const cellColor = useCallback((value: any, i: number) => {
     const alert = props.alerts?.get(i);
-    if (value === alert?.danger) {
+    const str = value.toString();
+    if (str === alert?.danger) {
       return AlertColors.DANGER;
     }
 
-    if (value === alert?.good) {
+    if (str === alert?.good) {
       return AlertColors.GOOD;
     }
 
-    if (value === alert?.great) {
+    if (str === alert?.great) {
       return AlertColors.GREAT;
     }
     return "";

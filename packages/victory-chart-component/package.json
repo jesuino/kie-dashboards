@@ -1,5 +1,5 @@
 {
-  "name": "@kie-dashboards/card-component",
+  "name": "@kie-dashboards/victory-chart-component",
   "version": "0.0.0",
   "description": "",
   "license": "Apache-2.0",
@@ -17,7 +17,7 @@
     "start": "webpack-dev-server -d --host 0.0.0.0 --env WEBPACK_DEV_SERVER=true"
   },
   "dependencies": {
-    "@kie-dashboards/pfcard-base": "0.0.0"
+    "@kie-dashboards/victory-chart-base": "0.0.0"
   },
   "babel": {
     "presets": [

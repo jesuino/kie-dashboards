@@ -1,20 +1,73 @@
 {
   "init": [
     {
-      "key": "alertColumn",
-      "value": "1"
+      "key": "chartType",
+      "value": "line"
     },
     {
-      "key": "alertDanger",
-      "value": "14964400"
+      "key": "themeColor",
+      "value": "multi-ordered"
     },
     {
-      "key": "alertGreat",
-      "value": "5812464"
+      "key": "themeVariant",
+      "value": "dark"
     },
     {
-      "key": "alertGood",
-      "value": "5793455"
+      "key": "zoom",
+      "value": "false"
+    },
+    {
+      "key": "legendPosition",
+      "value": "bottom"
+    },
+
+    {
+      "key": "description",
+      "value": "Countries evolution"
+    },
+    {
+      "key": "paddingBottom",
+      "value": "0"
+    },
+    {
+      "key": "paddingLeft",
+      "value": "150"
+    },
+    {
+      "key": "paddingRight",
+      "value": "10"
+    },
+    {
+      "key": "paddingTop",
+      "value": "0"
+    },
+    {
+      "key": "gridx",
+      "value": "true"
+    },
+    {
+      "key": "gridy",
+      "value": "true"
+    },
+    {
+      "key": "animate",
+      "value": "false"
+    },
+    {
+      "key": "animationDuration",
+      "value": "200"
+    },
+    {
+      "key": "animationEasing",
+      "value": "elasticInOut"
+    },
+    {
+      "key": "donutTitle",
+      "value": "Donut Title"
+    },
+    {
+      "key": "donutSubTitle",
+      "value": "Donut Subtitle"
     }
   ],
   "dataSet": {

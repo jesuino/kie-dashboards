@@ -3,7 +3,7 @@
   "name": "Test",
   "style": "FLUID",
   "layoutProperties": {
-    "background-color": "#eeeeee"
+    "background-color": "#efefef"
   },
   "rows": [
     {
@@ -32,6 +32,7 @@
     {
       "height": "12",
       "properties": {
+        "margin-left": "10px",
         "margin-bottom": "20px"
       },
       "layoutColumns": [
@@ -44,9 +45,8 @@
             {
               "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
               "properties": {
-                "margin-left": "10px",
                 "componentId": "card",
-                "json": "{\n  \"uuid\": \"gwt-uid-628\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card\",\n  \"card\": {\n    \"alertColumn\": \"\",\n    \"alertDanger\": \"\",\n    \"alertGood\": \"\",\n    \"alertGreat\": \"\",\n    \"color\": \"blue\",\n    \"title\": \"Active\",\n    \"subtitle\": \"Process Instances\"\n  },\n  \"chart\": {\n    \"width\": \"300\",\n    \"height\": \"100\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 0\",\n            \"column\": \"Column 0\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
+                "json": "{\n  \"uuid\": \"gwt-uid-628\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card\",\n  \"card\": {\n    \"alertColumn\": \"\",\n    \"alertDanger\": \"\",\n    \"alertGood\": \"\",\n    \"alertGreat\": \"\",\n    \"color\": \"blue\",\n    \"title\": \"Active\",\n    \"subtitle\": \"Process Instances\"\n  },\n  \"chart\": {\n    \"width\": \"250\",\n    \"height\": \"100\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 0\",\n            \"column\": \"Column 0\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
               },
               "parts": []
             }
@@ -62,7 +62,7 @@
               "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
               "properties": {
                 "componentId": "card",
-                "json": "{\n  \"uuid\": \"gwt-uid-964\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card\",\n  \"card\": {\n    \"alertColumn\": \"\",\n    \"alertDanger\": \"\",\n    \"alertGood\": \"\",\n    \"alertGreat\": \"\",\n    \"color\": \"green\",\n    \"title\": \"Completed\",\n    \"subtitle\": \"Process Instances\"\n  },\n  \"chart\": {\n    \"width\": \"300\",\n    \"height\": \"100\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 1\",\n            \"column\": \"Column 1_2\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
+                "json": "{\n  \"uuid\": \"gwt-uid-964\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card\",\n  \"card\": {\n    \"alertColumn\": \"\",\n    \"alertDanger\": \"\",\n    \"alertGood\": \"\",\n    \"alertGreat\": \"\",\n    \"color\": \"green\",\n    \"title\": \"Completed\",\n    \"subtitle\": \"Process Instances\"\n  },\n  \"chart\": {\n    \"width\": \"250\",\n    \"height\": \"100\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 1\",\n            \"column\": \"Column 1_2\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
               },
               "parts": []
             }
@@ -78,7 +78,7 @@
               "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
               "properties": {
                 "componentId": "card",
-                "json": "{\n  \"uuid\": \"gwt-uid-1131\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card\",\n  \"card\": {\n    \"alertColumn\": \"\",\n    \"alertDanger\": \"\",\n    \"alertGood\": \"\",\n    \"alertGreat\": \"\",\n    \"color\": \"red\",\n    \"title\": \"Aborted\",\n    \"subtitle\": \"Process Instances\"\n  },\n  \"chart\": {\n    \"width\": \"300\",\n    \"height\": \"100\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 2\",\n            \"column\": \"Column 2_2\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
+                "json": "{\n  \"uuid\": \"gwt-uid-1131\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card\",\n  \"card\": {\n    \"alertColumn\": \"\",\n    \"alertDanger\": \"\",\n    \"alertGood\": \"\",\n    \"alertGreat\": \"\",\n    \"color\": \"red\",\n    \"title\": \"Aborted\",\n    \"subtitle\": \"Process Instances\"\n  },\n  \"chart\": {\n    \"width\": \"250\",\n    \"height\": \"100\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 2\",\n            \"column\": \"Column 2_2\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
               },
               "parts": []
             }
