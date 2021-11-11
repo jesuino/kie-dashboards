@@ -12,7 +12,7 @@
     "lint": "tslint -c ../../tslint.json 'src/**/*.{ts,tsx,js,jsx}'",
     "test": "jest --silent --verbose --passWithNoTests",
     "test:clearCache": "jest --clearCache",
-    "build:fast": "rm -rf dist && webpack && rm -rf ../components/card && cp -r dist/ ../components/card",
+    "build:fast": "rm -rf dist && webpack && rm -rf ../components/victory-charts && cp -r dist/ ../components/victory-charts",
     "build:prod": "yarn run lint && yarn test && yarn run build:fast",
     "start": "webpack-dev-server -d --host 0.0.0.0 --env WEBPACK_DEV_SERVER=true"
   },

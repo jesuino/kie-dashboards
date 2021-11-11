@@ -9,6 +9,14 @@
       "value": "multi-ordered"
     },
     {
+      "key": "width",
+      "value": "0"
+    },
+    {
+      "key": "height",
+      "value": "0"
+    },
+    {
       "key": "themeVariant",
       "value": "dark"
     },
@@ -22,20 +30,24 @@
     },
 
     {
+      "key": "title",
+      "value": "Countries evolution"
+    },
+    {
       "key": "description",
       "value": "Countries evolution"
     },
     {
       "key": "paddingBottom",
-      "value": "0"
-    },
-    {
-      "key": "paddingLeft",
       "value": "150"
     },
     {
+      "key": "paddingLeft",
+      "value": "100"
+    },
+    {
       "key": "paddingRight",
-      "value": "10"
+      "value": "0"
     },
     {
       "key": "paddingTop",
@@ -91,7 +103,7 @@
           "columnName": "GDP 2010",
           "valueExpression": "value",
           "emptyTemplate": "---",
-          "valuePattern": "#,##0.00"
+          "valuePattern": "#,"
         }
       },
       {

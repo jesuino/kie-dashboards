@@ -52,6 +52,9 @@ export function VictoryChartComponent(props: Props) {
           themeColor: (params.get("themeColor") as ThemeColorType) || "multi",
           themeVariant: (params.get("themeVariant") as ThemeVariantType) || "light",
 
+          ariaTitle:  params.get("title"),
+          ariaDescription: params.get("description"),
+
           width: +params.get("width") || 1200,
           height: +params.get("height") || 800,
 

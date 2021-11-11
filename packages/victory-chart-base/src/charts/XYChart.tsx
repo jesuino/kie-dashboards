@@ -9,7 +9,6 @@ export abstract class XYChart extends BaseChart {
   render() {
     const { width, height, themeColor, themeVariant } = this.props;
     return (
-      <div style={{ height: width + "px", width: height + "px" }}>
         <Chart          
           ariaDesc={this.props.ariaDescription}
           ariaTitle={this.props.ariaTitle}
@@ -29,7 +28,6 @@ export abstract class XYChart extends BaseChart {
           <ChartAxis dependentAxis showGrid={this.props.grid.x} tickFormat={t => numeral(t).format(this.pattern())} />
           {this.buildChartGroup()}
         </Chart>
-      </div>
     );
   }
 

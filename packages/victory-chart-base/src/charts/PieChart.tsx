@@ -13,7 +13,6 @@ export class PieChart extends PieBaseChart {
         ariaTitle={this.props.ariaTitle}
         constrainToVisibleArea={true}
         data={this.dataSetToPieChart()}
-        height={height}
         labels={({ datum }) => `${datum.name}: ${datum.y}`}
         legendData={this.legendData}
         legendOrientation={this.legendOrientation}
@@ -23,6 +22,7 @@ export class PieChart extends PieBaseChart {
         themeColor={themeColor}
         themeVariant={themeVariant}
         width={width}
+        height={height}
       />
     );
   }

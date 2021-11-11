@@ -7,10 +7,19 @@ import { DonutChart } from "./charts/DonutChart";
 import { PieChart } from "./charts/PieChart";
 import { StackChart } from "./charts/StackChart";
 import { PaddingProps } from "victory-core";
-import { ThemeColorType, ChartType, LegendPosition, Grid, AnimationProp, AnimationEasingType, ThemeVariantType } from "./charts/BaseChart";
+import {
+  ThemeColorType,
+  ChartType,
+  LegendPosition,
+  Grid,
+  AnimationProp,
+  AnimationEasingType,
+  ThemeVariantType
+} from "./charts/BaseChart";
 import { validateDataSetForChart } from "./charts/PropsValidation";
 import { UtilizationDonut } from "./charts/UtilizationDonut";
 import { DataSet } from "@dashbuilder-js/component-api";
+import { Card, CardBody, CardTitle, Stack, StackItem, Text, TextContent, TextVariants } from "@patternfly/react-core";
 
 export interface VictoryChartProps {
   dataSet?: DataSet;
@@ -70,8 +79,7 @@ interface ChartState {
 }
 
 export const VictoryChart = (props: VictoryChartProps) => {
-  let containerRef: React.RefObject<any>;  
-  const [chartState] = useState<ChartState> ({
+  const [chartState] = useState<ChartState>({
     width: props.width || 600,
     height: props.height || 400,
     type: props.type,
@@ -101,13 +109,6 @@ export const VictoryChart = (props: VictoryChartProps) => {
     donutSubTitle: props.donutSubTitle
   });
 
-  const handleResize = () => {
-    /*
-    if (containerRef.current && containerRef.current.clientWidth) {
-      // TODO
-    }*/
-  };
-
   useEffect(() => {
     const validation = validateDataSetForChart(props.type, props.dataSet || EMPTY_DATASET);
     if (validation.isValid) {
@@ -116,15 +117,6 @@ export const VictoryChart = (props: VictoryChartProps) => {
       props.onValidationError!(validation.message!);
     }
   }, [props]);
-
-  useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const selectChart = (type: ChartType) => {
     switch (type) {
@@ -144,5 +136,17 @@ export const VictoryChart = (props: VictoryChartProps) => {
         return <UtilizationDonut {...chartState} />;
     }
   };
-  return <>{selectChart(props.type)}</>;
+  return (
+    <>
+      {chartState.ariaTitle && (
+        <TextContent style={{ margin: "10px"}}>
+          <Text style={{ fontSize: "3vw" }} component={TextVariants.h2}>
+            {chartState.ariaTitle}
+          </Text>
+          {chartState.ariaDescription && <Text component={TextVariants.small}>{chartState.ariaDescription}</Text>}
+        </TextContent>
+      )}
+      {selectChart(chartState.type)}
+    </>
+  );
 };
