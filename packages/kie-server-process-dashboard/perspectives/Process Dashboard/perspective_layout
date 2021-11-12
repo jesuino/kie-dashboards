@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "name": "Process Dashboard",
+  "style": "FLUID",
+  "layoutProperties": {
+    "width": "3000px",
+    "height": "3000px"
+  },
+  "rows": [
+    {
+      "height": "12",
+      "properties": {
+        "margin-left": "20px"
+      },
+      "layoutColumns": [
+        {
+          "span": "12",
+          "height": "12",
+          "properties": {},
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
+              "properties": {
+                "background-color": "#EEEEEE",
+                "componentId": "process-dashboard-component",
+                "json": "{\n  \"uuid\": \"gwt-uid-47\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"process-dashboard-component\",\n  \"process-dashboard-component\": {\n    \"color\": \"black\",\n    \"title\": \"\",\n    \"subtitle\": \"\",\n    \"allowEmpty\": \"true\"\n  },\n  \"chart\": {\n    \"width\": \"1300\",\n    \"height\": \"510\"\n  },\n  \"refresh\": {\n    \"interval\": \"2\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"1fc467f7-cb89-489b-a4fa-60eab0e51b8e\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSINSTANCEID\",\n            \"column\": \"PROCESSINSTANCEID\"\n          },\n          {\n            \"source\": \"PROCESSTYPE\",\n            \"column\": \"PROCESSTYPE\"\n          },\n          {\n            \"source\": \"STATUS\",\n            \"column\": \"STATUS\"\n          },\n          {\n            \"source\": \"SLACOMPLIANCE\",\n            \"column\": \"SLACOMPLIANCE\"\n          },\n          {\n            \"source\": \"START_DATE\",\n            \"column\": \"START_DATE\"\n          },\n          {\n            \"source\": \"USER_IDENTITY\",\n            \"column\": \"USER_IDENTITY\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}",
+                "margin-right": "10px"
+              },
+              "parts": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

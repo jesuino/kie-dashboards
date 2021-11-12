@@ -34,17 +34,28 @@ interface Props {
   subtitle: string;
   value: string;
   color: string;
+  valueFontSize?: string;
+  width?: number;
+  height?: number;
 }
 
 export const PfCard = (props: Props) => {
   return (
     <>
-      <Card isHoverable={true} isCompact={true} isRounded={true}>
+      <Card
+        isHoverable={true}
+        isCompact={true}
+        isRounded={true}
+        style={{
+          width: props.width ? props.width + "px" : undefined,
+          height: props.height ? props.height + "px" : undefined
+        }}
+      >
         <CardBody>
           <Flex style={{ alignItems: "center", margin: "5px" }}>
             <FlexItem spacer={{ default: "spacerSm" }}>
               <TextContent>
-                <Text style={{ color: props.color }} component={TextVariants.h2}>
+                <Text style={{ color: props.color, fontSize: props.valueFontSize, marginRight: "15px" }} component={TextVariants.h1}  >
                   {props.value}
                 </Text>
               </TextContent>

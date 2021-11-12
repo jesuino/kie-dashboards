@@ -1,0 +1,27 @@
+{
+  "root_items": [
+    {
+      "id": "dashboards_group",
+      "type": "GROUP",
+      "name": "Dashboards",
+      "description": "",
+      "modifiable": true,
+      "children": [
+        {
+          "id": "perspective_1636747246487",
+          "type": "ITEM",
+          "name": "Process Dashboard",
+          "modifiable": true,
+          "context": "resourceId=Process Dashboard;resourceType=PERSPECTIVE;"
+        },
+        {
+          "id": "perspective_1636747576844",
+          "type": "ITEM",
+          "name": "process Dashboad 2",
+          "modifiable": true,
+          "context": "resourceId=process Dashboad 2;resourceType=PERSPECTIVE;"
+        }
+      ]
+    }
+  ]
+}

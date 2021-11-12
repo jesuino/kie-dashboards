@@ -93,10 +93,7 @@
         {
           "span": "12",
           "height": "12",
-          "properties": {
-            "margin-left": "10px",
-            "margin-bottom": "10px"
-          },
+          "properties": {},
           "rows": [],
           "layoutComponents": [
             {

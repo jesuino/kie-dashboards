@@ -1,0 +1,92 @@
+{
+  "init": [
+    {
+      "key": "backgroundColor",
+      "value": "#EEEEEE"
+    }
+  ],
+  "dataSet": {
+    "columns": [
+      {
+        "name": "InstanceId",
+        "type": "NUMBER",
+        "settings": {
+          "columnId": "processInstanceId",
+          "columnName": "InstanceId",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": "#"
+        }
+      },
+      {
+        "name": "Type",
+        "type": "NUMBER",
+        "settings": {
+          "columnId": "type",
+          "columnName": "Type",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": "#"
+        }
+      },
+
+      {
+        "name": "Status",
+        "type": "NUMBER",
+        "settings": {
+          "columnId": "status",
+          "columnName": "Status",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": "#"
+        }
+      },
+      {
+        "name": "slaCompliance",
+        "type": "NUMBER",
+        "settings": {
+          "columnId": "slaCompliance",
+          "columnName": "SLA Compliance",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": "#"
+        }
+      },
+      {
+        "name": "Start Date",
+        "type": "DATE",
+        "settings": {
+          "columnId": "startDate",
+          "columnName": "Start Date",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": null
+        }
+      },
+      {
+        "name": "User Identity",
+        "type": "LABEL",
+        "settings": {
+          "columnId": "userIdentity",
+          "columnName": "User",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": null
+        }
+      }
+    ],
+    "data": [
+      [1, 1, 1, 0, "2021-08-09T22:51:38Z", "mark"],
+      [2, 1, 2, 0, "2021-08-09T22:52:09Z", "porcelli"],
+      [3, 1, 1, 0, "2021-08-09T22:53:36Z", "eder"],
+      [4, 1, 2, 0, "2021-08-09T23:07:05Z", "eder"],
+      [5, 1, 1, 0, "2021-08-17T14:22:56Z", "eder"],
+      [6, 1, 1, 0, "2021-08-22T16:31:42Z", "porcelli"],
+      [6, 1, 1, 0, "2021-08-22T16:31:42Z", "porcelli"],
+      [6, 1, 1, 0, "2021-08-23T16:31:42Z", "eder"],
+      [6, 1, 1, 0, "2021-08-21T16:31:42Z", "tiago"],
+      [1, 1, 1, 0, "2021-07-29T22:51:38Z", "mark"],
+      [1, 1, 1, 0, "2021-08-02T22:51:38Z", "mark"]
+    ]
+  }
+}

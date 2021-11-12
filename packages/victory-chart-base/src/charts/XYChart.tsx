@@ -9,25 +9,25 @@ export abstract class XYChart extends BaseChart {
   render() {
     const { width, height, themeColor, themeVariant } = this.props;
     return (
-        <Chart          
-          ariaDesc={this.props.ariaDescription}
-          ariaTitle={this.props.ariaTitle}
-          containerComponent={this.containerComponent}
-          domainPadding={{ x: [30, 25] }}
-          legendData={this.legendData}
-          legendOrientation={this.legendOrientation}
-          legendPosition={this.props.legendPosition}
-          width={width}
-          height={height}
-          animate={this.animationProp}
-          padding={this.props.padding}
-          themeColor={themeColor}
-          themeVariant={themeVariant}
-        >
-          <ChartAxis showGrid={this.props.grid.y} />
-          <ChartAxis dependentAxis showGrid={this.props.grid.x} tickFormat={t => numeral(t).format(this.pattern())} />
-          {this.buildChartGroup()}
-        </Chart>
+      <Chart
+        ariaDesc={this.props.ariaDescription}
+        ariaTitle={this.props.ariaTitle}
+        containerComponent={this.containerComponent}
+        domainPadding={{ x: [30, 25] }}
+        legendData={this.legendData}
+        legendOrientation={this.legendOrientation}
+        legendPosition={this.props.legendPosition}
+        width={width}
+        height={height}
+        animate={this.animationProp}
+        padding={this.props.padding}
+        themeColor={themeColor}
+        themeVariant={themeVariant}
+      >
+        <ChartAxis showGrid={this.props.grid.y} />
+        <ChartAxis dependentAxis showGrid={this.props.grid.x} tickFormat={t => numeral(t).format(this.pattern())} />
+        {this.buildChartGroup()}
+      </Chart>
     );
   }
 

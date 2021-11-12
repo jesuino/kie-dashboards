@@ -59,7 +59,7 @@ export interface LegendData {
   name: string;
 }
 
-interface ChartProps {
+export interface ChartProps {
   width: number;
   height: number;
   themeColor: ThemeColorType;
@@ -75,6 +75,8 @@ interface ChartProps {
 
   donutTitle?: string;
   donutSubTitle?: string;
+
+  horizontalBars?:boolean;
 }
 
 export abstract class BaseChart extends React.Component<ChartProps, any> {
@@ -84,7 +86,7 @@ export abstract class BaseChart extends React.Component<ChartProps, any> {
 
   containerComponent: React.ReactElement<any> = (
     // TODO: Explore options from CursorVoronoiContainer
-    <ChartVoronoiContainer labels={({ datum }) => `${datum.name}: ${datum.y}`}  />
+    <ChartVoronoiContainer labels={({ datum }) => `${datum.x}: ${datum.y}`}  constrainToVisibleArea={true}/>
   );
 
   constructor(props: ChartProps) {
