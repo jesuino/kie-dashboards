@@ -1,0 +1,25 @@
+{
+  "name": "Card Filter",
+  "category": "Patternfly 4",
+  "icon": "pficon pficon-messages",
+  "parameters": [
+    {
+      "name": "wrap",
+      "type": "boolean",
+      "defaultValue": "false",
+      "label": "Wrap"
+    },
+    {
+      "name": "cardWidth",
+      "type": "text",
+      "defaultValue": "200px",
+      "label": "Card Width"
+    },
+    {
+      "name": "cardHeight",
+      "type": "text",
+      "defaultValue": "100px",
+      "label": "Card Height"
+    }
+  ]
+}

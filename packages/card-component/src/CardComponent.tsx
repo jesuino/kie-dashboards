@@ -17,7 +17,7 @@
 import * as React from "react";
 import { ComponentController, DataSet, FilterRequest } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
-import { PfCard } from "../../pfcard-base/src/PfCard";
+import { PfCard } from "@kie-dashboards/card-base";
 
 const DEFAULT_COLOR = "black";
 const COLOR_PROP = "color";

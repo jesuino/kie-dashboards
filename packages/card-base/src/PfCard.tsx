@@ -27,8 +27,6 @@ import {
 } from "@patternfly/react-core";
 import * as React from "react";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
-
 interface Props {
   title: string;
   subtitle: string;
@@ -55,7 +53,10 @@ export const PfCard = (props: Props) => {
           <Flex style={{ alignItems: "center", margin: "5px" }}>
             <FlexItem spacer={{ default: "spacerSm" }}>
               <TextContent>
-                <Text style={{ color: props.color, fontSize: props.valueFontSize, marginRight: "15px" }} component={TextVariants.h1}  >
+                <Text
+                  style={{ color: props.color, fontSize: props.valueFontSize, marginRight: "15px" }}
+                  component={TextVariants.h1}
+                >
                   {props.value}
                 </Text>
               </TextContent>

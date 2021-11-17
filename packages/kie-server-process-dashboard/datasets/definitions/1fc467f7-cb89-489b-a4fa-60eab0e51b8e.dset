@@ -9,7 +9,7 @@
   "pushMaxSize": 1024,
   "refreshAlways": false,
   "dataSource": "${org.kie.server.persistence.ds}",
-  "dbSQL": "select processInstanceId, processType, status, slaCompliance, start_date, user_identity from ProcessInstanceLog\n",
+  "dbSQL": "select processName,  processInstanceId, processType, status, slaCompliance, start_date, user_identity from ProcessInstanceLog\n",
   "queryTarget": "CUSTOM",
   "serverTemplateId": "sample-server",
   "allColumns": false,
@@ -33,6 +33,10 @@
     {
       "id": "START_DATE",
       "type": "date"
+    },
+    {
+      "id": "PROCESSNAME",
+      "type": "label"
     },
     {
       "id": "PROCESSTYPE",

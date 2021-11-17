@@ -17,25 +17,15 @@
 import * as React from "react";
 import { Column, ColumnType, ComponentController, DataSet, FilterRequest } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
-import { PfCard } from "@kie-dashboards/pfcard-base/src/PfCard";
-import {
-  Alert,
-  DataListText,
-  Flex,
-  FlexItem,
-  Grid,
-  GridItem,
-  Stack,
-  StackItem,
-  Text,
-  TextContent
-} from "@patternfly/react-core";
+import { PfCard } from "@kie-dashboards/card-base";
+import { Alert, DataListText, Flex, FlexItem, Text, TextContent } from "@patternfly/react-core";
 import { VictoryChart } from "@kie-dashboards/victory-chart-base";
-import { listenerCount } from "process";
+import { CardFilter, CardInfo } from "@kie-dashboards/card-filter-base";
+import { byStatus, byUser, byStartDay } from "./DataSetMappers";
 
 const DEFAULT_BG_COLOR = "#EEEEEE";
 
-interface ProcessStatus {
+export interface ProcessStatus {
   code: number;
   name: string;
 }
@@ -71,7 +61,8 @@ interface Props {
   controller: ComponentController;
 }
 
-interface ProcessInstanceSummary {
+export interface ProcessInstanceSummary {
+  processId: string;
   processInstanceId: number;
   type: number;
   status: ProcessStatus;
@@ -87,6 +78,13 @@ interface ProcessDashboardState {
   // main dataset
   processInstancesSummary?: ProcessInstanceSummary[];
 
+  // the selected processes is maintained on this component
+  selectedProcess?: string;
+  selectedProcessIndex?:number;
+
+  // filter
+  cardsInfo: CardInfo[];
+
   // cards information
   activeProcesses?: number;
   completedProcesses?: number;
@@ -99,71 +97,21 @@ interface ProcessDashboardState {
   processesByUser?: DataSet;
 }
 
-const DEFAULT_DATASET: DataSet = {
-  columns: [
-    {
-      name: "Country",
-      type: ColumnType.LABEL,
-      settings: {
-        columnId: "Country",
-        columnName: "Country",
-        valueExpression: "value",
-        emptyTemplate: "---",
-        valuePattern: ""
-      }
-    },
-    {
-      name: "GDP 2010",
-      type: ColumnType.NUMBER,
-      settings: {
-        columnId: "GDP 2010",
-        columnName: "GDP 2010",
-        valueExpression: "value",
-        emptyTemplate: "---",
-        valuePattern: "#,"
-      }
-    },
-    {
-      name: "GDP 2015",
-      type: ColumnType.NUMBER,
-      settings: {
-        columnId: "GDP 2015",
-        columnName: "GDP 2015",
-        valueExpression: "value",
-        emptyTemplate: "---",
-        valuePattern: "#,##0.00"
-      }
-    }
-  ],
-  data: [
-    ["United States", "14964400", "18036650"],
-    ["China", "5812464", "11226186"],
-    ["Japan", "5793455", "4382420"],
-    ["Germany", "3309668", "3365293"],
-    ["United Kingdom", "2246079", "2863304"],
-    ["France", "2560002", "2420163"],
-    ["Brazil", "2087889", "1801482"],
-    ["Italy", "2051412", "1825820"],
-    ["India", "1729010", "2088155"],
-    ["Russia", "1638463", "1356700"],
-    ["Canada", "1504900", "1552808"]
-  ]
-};
-
 const validate = (dataSet: DataSet): string | undefined => {
   const columns = dataSet.columns;
   if (
-    columns.length < 6 ||
-    columns[0].type !== ColumnType.NUMBER ||
+    columns.length < 7 ||
+    (columns[0].type !== ColumnType.TEXT && columns[0].type !== ColumnType.LABEL) ||
     columns[1].type !== ColumnType.NUMBER ||
     columns[2].type !== ColumnType.NUMBER ||
     columns[3].type !== ColumnType.NUMBER ||
-    columns[4].type !== ColumnType.DATE ||
-    columns[5].type !== ColumnType.LABEL
+    columns[4].type !== ColumnType.NUMBER ||
+    columns[5].type !== ColumnType.DATE ||
+    columns[6].type !== ColumnType.LABEL
   ) {
     return `
-    Invalid dataset. Expected 6 columns with the types NUMBER, NUMBER, NUMBER, DATE and LABEL. 
-    These columns should be process instance id, type, status, sla compliance, start date and user identity.
+    Invalid dataset. Expected 7 columns with the types TEXT or LABEL, TEXT or LABEL, NUMBER, NUMBER, NUMBER, DATE and LABEL. 
+    These columns should be process id (or name), process instance id, type, status, sla compliance, start date and user identity.
     `;
   }
 
@@ -175,146 +123,27 @@ const toProcessInstanceSummary = (dataSet: DataSet): ProcessInstanceSummary[] =>
 
   dataSet.data.forEach(line => {
     list.push({
-      processInstanceId: +line[0],
-      type: +line[1],
-      status: PROCESS_STATUSES.filter(s => s.code === +line[2])[0],
-      slaCompliance: SLAS.filter(s => s.code == +line[3])[0],
-      startDate: line[4] || "",
-      userIdentity: line[5]
+      processId: line[0],
+      processInstanceId: +line[1],
+      type: +line[2],
+      status: PROCESS_STATUSES.filter(s => s.code === +line[3])[0],
+      slaCompliance: SLAS.filter(s => s.code == +line[4])[0],
+      startDate: line[5] || "",
+      userIdentity: line[6]
     });
   });
   return list;
 };
 
-const byStatus = (instances: ProcessInstanceSummary[]): DataSet => {
-  const data: string[][] = [];
-  const summedByStatus = new Map<ProcessStatus, number>();
-  instances.forEach(i => {
-    const totalByStatus = summedByStatus.get(i.status) || 0;
-    summedByStatus.set(i.status, totalByStatus + 1);
-  });
-
-  summedByStatus.forEach((v, k) => {
-    data.push([k.name, `${v}`]);
-  });
-  return {
-    columns: [
-      {
-        name: "Status",
-        type: ColumnType.LABEL,
-        settings: {
-          columnId: "status",
-          columnName: "Status",
-          emptyTemplate: "",
-          valueExpression: "value",
-          valuePattern: ""
-        }
-      },
-      {
-        name: "Total",
-        type: ColumnType.NUMBER,
-        settings: {
-          columnId: "sum",
-          columnName: "Total",
-          emptyTemplate: "",
-          valueExpression: "value",
-          valuePattern: "#"
-        }
-      }
-    ],
-    data: data
-  };
-};
-
-
-const byStartDay = (instances: ProcessInstanceSummary[]): DataSet => {
-  const data: string[][] = [];
-  const summedByDay = new Map<string, number>();
-  instances.forEach(i => {
-    const startDate = new Date(i.startDate);
-    const day = `${startDate.getDay()}/${startDate.getMonth()}/${startDate.getFullYear()}`;
-    const totalByDay = summedByDay.get(day) || 0;
-    summedByDay.set(day, totalByDay + 1);
-  });
-
-  summedByDay.forEach((v, k) => {
-    data.push([k, `${v}`]);
-  });
-
-
-  data.sort((l1, l2) => l1[0].localeCompare(l2[0]))
-  return {
-    columns: [
-      {
-        name: "Start Day",
-        type: ColumnType.LABEL,
-        settings: {
-          columnId: "startDay",
-          columnName: "Start Day",
-          emptyTemplate: "",
-          valueExpression: "value",
-          valuePattern: ""
-        }
-      },
-      {
-        name: "Total",
-        type: ColumnType.NUMBER,
-        settings: {
-          columnId: "sum",
-          columnName: "Total",
-          emptyTemplate: "",
-          valueExpression: "value",
-          valuePattern: "#"
-        }
-      }
-    ],
-    data: data
-  };
-};
-
-const byUser = (instances: ProcessInstanceSummary[]): DataSet => {
-  const data: string[][] = [];
-  const summedByUser = new Map<string, number>();
-  instances.forEach(i => {
-
-    const totalByUser = summedByUser.get(i.userIdentity) || 0;
-    summedByUser.set(i.userIdentity, totalByUser + 1);
-  });
-
-  summedByUser.forEach((v, k) => {
-    data.push([k, `${v}`]);
-  });
-  return {
-    columns: [
-      {
-        name: "User",
-        type: ColumnType.LABEL,
-        settings: {
-          columnId: "user",
-          columnName: "User",
-          emptyTemplate: "",
-          valueExpression: "value",
-          valuePattern: ""
-        }
-      },
-      {
-        name: "Total",
-        type: ColumnType.NUMBER,
-        settings: {
-          columnId: "sum",
-          columnName: "Total",
-          emptyTemplate: "",
-          valueExpression: "value",
-          valuePattern: "#"
-        }
-      }
-    ],
-    data: data
-  };
+const cardsInfo = (instances: ProcessInstanceSummary[]): CardInfo[] => {
+  const processIdsMap = new Map<string, CardInfo>();
+  instances.forEach(p => processIdsMap.set(p.processId, { title: p.processId }));
+  return Array.from(processIdsMap.values());
 };
 
 export function ProcessDashboardComponent(props: Props) {
   const [processDashboardState, setProcessDashboardState] = useState<ProcessDashboardState>({
+    cardsInfo: [],
     backgroundColor: DEFAULT_BG_COLOR
   });
 
@@ -337,11 +166,20 @@ export function ProcessDashboardComponent(props: Props) {
       }
       props.controller.configurationOk();
 
-      const processInstancesSummaries = toProcessInstanceSummary(_dataset);
+      const processInstancesSummaries = toProcessInstanceSummary(_dataset).filter(p => p.processId === processDashboardState.selectedProcess);
+
+      const _cardsInfo = cardsInfo(processInstancesSummaries);
+      let selectedCardIndex = _cardsInfo.findIndex(c => c.title === processDashboardState.selectedProcess);
+      if (selectedCardIndex === -1 && _cardsInfo.length > 0) {
+        selectedCardIndex = 0;
+      }
 
       setProcessDashboardState((dashboarState: ProcessDashboardState) => {
         return {
           ...dashboarState,
+          selectedProcess: _cardsInfo[selectedCardIndex].title,
+          selectedProcessIndex: selectedCardIndex,
+          cardsInfo: _cardsInfo,
           activeProcesses: processInstancesSummaries.filter(p => p.status === STATUS_ACTIVE).length,
           completedProcesses: processInstancesSummaries.filter(p => p.status === STATUS_COMPLETED).length,
           abortedProcesses: processInstancesSummaries.filter(p => p.status === STATUS_ABORTED).length,
@@ -350,7 +188,6 @@ export function ProcessDashboardComponent(props: Props) {
           processesByStartDate: byStartDay(processInstancesSummaries),
           processesByStatus: byStatus(processInstancesSummaries),
           processesByUser: byUser(processInstancesSummaries)
-
         };
       });
     });
@@ -359,12 +196,23 @@ export function ProcessDashboardComponent(props: Props) {
   return (
     <>
       <div>
-        <Flex style={{ backgroundColor: processDashboardState.backgroundColor, paddingLeft: "10px" }} direction={{ default: "column" }}>
+        <Flex
+          style={{ backgroundColor: processDashboardState.backgroundColor, paddingLeft: "10px" }}
+          direction={{ default: "column" }}
+        >
           {processDashboardState.processInstancesSummary && processDashboardState.processInstancesSummary.length > 0 ? (
             <>
               <FlexItem>
                 <TextContent>
-                  <Text component={"h3"}>Filters</Text>
+                  <Text component={"h1"}>Processes</Text>
+                </TextContent>
+              </FlexItem>
+              <FlexItem>
+                <CardFilter selectedIndex={processDashboardState.selectedProcessIndex} cardWidth={"300px"} cardsInfos={processDashboardState.cardsInfo} onCardSelected={i => {}} />
+              </FlexItem>
+              <FlexItem>
+                <TextContent>
+                  <Text component={"h2"}>Summary</Text>
                 </TextContent>
               </FlexItem>
 
@@ -373,7 +221,7 @@ export function ProcessDashboardComponent(props: Props) {
                   <FlexItem>
                     <PfCard
                       value={`${processDashboardState.activeProcesses || 0}`}
-                      color="red"
+                      color="blue"
                       title="Active"
                       subtitle="Process Instances"
                       width={300}
@@ -416,7 +264,7 @@ export function ProcessDashboardComponent(props: Props) {
               <FlexItem>
                 {" "}
                 <TextContent>
-                  <Text component={"h3"}>Charts</Text>
+                  <Text component={"h2"}>Charts</Text>
                 </TextContent>
               </FlexItem>
 
@@ -435,7 +283,7 @@ export function ProcessDashboardComponent(props: Props) {
                       themeVariant="light"
                       staticTitle={true}
                       dataSet={processDashboardState.processesByStatus}
-                      paddingBottom={50}                      
+                      paddingBottom={50}
                       legendPosition="bottom"
                     />
                   </FlexItem>

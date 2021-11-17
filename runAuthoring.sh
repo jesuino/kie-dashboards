@@ -3,6 +3,7 @@ then
 	echo "DASHBUILDER_AUTHORING is not set";
 	exit 0;
 fi
+DB_VERSION=0.14.1
 DIR=`pwd`
 COMPONENTS_DIR="$DIR/packages/components"
 MODELS_DIR="$DIR/packages/dashboards"

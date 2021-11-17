@@ -1,0 +1,30 @@
+{
+  "init": [
+    {
+      "key": "wrap",
+      "value": "true"
+    },
+    {
+      "key": "cardWidth",
+      "value": "200px"
+    },
+    {
+      "key": "cardHeight",
+      "value": "100px"
+    }
+  ],
+  "dataSet": {
+    "columns": [
+
+    ],
+    "data": [
+      ["process1", "Process 1 description"],
+      ["process2", "Process 1 description"],
+      ["process3 with a long title", "Process 3 description"],
+      [
+        "process4",
+        "Process 4 description with a long long long long long long long long long long long long long long long long description"
+      ]
+    ]
+  }
+}

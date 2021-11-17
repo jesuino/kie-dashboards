@@ -22,3 +22,14 @@ Download it from: WIP
 
 Then go to `localhost:8180` to modify the existing dashboards. Changing the dasshboards trigger a reload on Dashbuilder Runtime
 
+
+## Edit the dashboard using a container image
+
+YOu can use `dashbuilder-authoring` to edit the dashboard. Use the following podman command:
+
+```
+podman run -p 8080:8080 \
+        -v ./packages/kie-server-process-dashboard/:/opt/jboss/.dashbuilder:Z \
+        -v ./packages/components/:/tmp/dashbuilder/components:Z \
+        -dti  quay.io/kogito_tooling_bot/dashbuilder-authoring:0.14.1
+```

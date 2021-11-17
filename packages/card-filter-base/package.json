@@ -1,5 +1,5 @@
 {
-  "name": "@kie-dashboards/card-component",
+  "name": "@kie-dashboards/card-filter-base",
   "version": "0.0.0",
   "description": "",
   "license": "Apache-2.0",
@@ -12,13 +12,10 @@
     "lint": "tslint -c ../../tslint.json 'src/**/*.{ts,tsx,js,jsx}'",
     "test": "jest --silent --verbose --passWithNoTests",
     "test:clearCache": "jest --clearCache",
-    "build:fast": "rm -rf dist && webpack && rm -rf ../components/card && cp -r dist/ ../components/card",
-    "build:prod": "yarn run lint && yarn test && yarn run build:fast",
-    "start": "webpack-dev-server -d --host 0.0.0.0 --env WEBPACK_DEV_SERVER=true"
-  },
-  "dependencies": {
-    "@kie-dashboards/card-base": "0.0.0"
-  },
+    "build:fast": "rm -rf dist && webpack",
+    "build": "yarn run lint && yarn test && yarn run build:fast",
+    "build:prod": "yarn run build --mode production"
+  }, 
   "babel": {
     "presets": [
       "@babel/env",

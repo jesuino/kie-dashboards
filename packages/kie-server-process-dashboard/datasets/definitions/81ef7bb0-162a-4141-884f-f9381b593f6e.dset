@@ -1,6 +1,6 @@
 {
-  "uuid": "a057840e-c918-414b-a750-053bba4b7bab",
-  "name": "values",
+  "uuid": "81ef7bb0-162a-4141-884f-f9381b593f6e",
+  "name": "Remote DataSet E",
   "provider": "External",
   "isPublic": true,
   "cacheEnabled": false,
@@ -9,18 +9,14 @@
   "pushMaxSize": 1024,
   "refreshAlways": false,
   "dynamic": false,
-  "url": "file:///home/wsiqueir/projects/kie-dashboards/packages/kie-server-process-dashboard/stats.json",
+  "url": "https://gist.githubusercontent.com/jesuino/211b66db00376734acccf1c8c3a73961/raw/27bc30165322e10c5a1319d72cad99ecb8ea6082/mydataset.json",
   "columns": [
     {
       "id": "Column 0",
-      "type": "number"
+      "type": "label"
     },
     {
       "id": "Column 1",
-      "type": "number"
-    },
-    {
-      "id": "Column 2",
       "type": "number"
     }
   ]
