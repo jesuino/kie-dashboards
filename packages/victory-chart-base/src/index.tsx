@@ -16,3 +16,4 @@
 
 export {ThemeColorType, ThemeVariantType, ChartType, LegendPosition, AnimationEasingType } from "./charts/BaseChart"
 export * from "./VictoryChart";
+export * from "./VictoryChartCard";

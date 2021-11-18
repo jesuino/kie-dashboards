@@ -2,7 +2,7 @@
   "init": [
     {
       "key": "chartType",
-      "value": "line"
+      "value": "area"
     },
     {
       "key": "themeColor",
@@ -39,11 +39,11 @@
     },
     {
       "key": "paddingBottom",
-      "value": "150"
+      "value": "60"
     },
     {
       "key": "paddingLeft",
-      "value": "100"
+      "value": "30"
     },
     {
       "key": "paddingRight",
@@ -59,6 +59,10 @@
     },
     {
       "key": "gridy",
+      "value": "true"
+    },
+    {
+      "key": "fixLabelsOverlap",
       "value": "true"
     },
     {

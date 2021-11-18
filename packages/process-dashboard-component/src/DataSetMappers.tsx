@@ -1,5 +1,7 @@
 import { ColumnType, DataSet } from "@dashbuilder-js/component-api";
-import { ProcessInstanceSummary, ProcessStatus } from "./ProcessDashboardComponent";
+import { ProcessStatus, PROCESS_STATUSES } from "./ProcessStatus";
+import { ProcessInstanceSummary } from "./ProcessInstanceSummary";
+import { ALL_SLAS as SLAS } from "./Sla";
 
 export const byStartDay = (instances: ProcessInstanceSummary[]): DataSet => {
   const data: string[][] = [];
@@ -123,4 +125,21 @@ export const byStatus = (instances: ProcessInstanceSummary[]): DataSet => {
     ],
     data: data
   };
+};
+
+
+export const toProcessInstanceSummary = (dataSet: DataSet): ProcessInstanceSummary[] => {
+  const list: ProcessInstanceSummary[] = [];
+
+  dataSet.data.forEach(line => {
+    list.push({
+      processInstanceId: +line[0],
+      type: +line[1],
+      status: PROCESS_STATUSES.filter(s => s.code === +line[2])[0],
+      slaCompliance: SLAS.filter(s => s.code == +line[3])[0],
+      startDate: line[4] || "",
+      userIdentity: line[5]
+    });
+  });
+  return list;
 };

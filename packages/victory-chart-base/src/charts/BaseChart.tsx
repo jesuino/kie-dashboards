@@ -76,7 +76,8 @@ export interface ChartProps {
   donutTitle?: string;
   donutSubTitle?: string;
 
-  horizontalBars?:boolean;
+  horizontalBars?: boolean;
+  fixLabelsOverlap?: boolean;
 }
 
 export abstract class BaseChart extends React.Component<ChartProps, any> {
@@ -86,7 +87,7 @@ export abstract class BaseChart extends React.Component<ChartProps, any> {
 
   containerComponent: React.ReactElement<any> = (
     // TODO: Explore options from CursorVoronoiContainer
-    <ChartVoronoiContainer labels={({ datum }) => `${datum.x}: ${datum.y}`}  constrainToVisibleArea={true}/>
+    <ChartVoronoiContainer labels={({ datum }) => `${datum.x}: ${datum.y}`} constrainToVisibleArea={true} />
   );
 
   constructor(props: ChartProps) {

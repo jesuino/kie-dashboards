@@ -31,7 +31,23 @@
       "properties": {},
       "layoutColumns": [
         {
-          "span": "12",
+          "span": "5",
+          "height": "12",
+          "properties": {},
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
+              "properties": {
+                "componentId": "victory-charts",
+                "json": "{\n  \"uuid\": \"gwt-uid-899\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"victory-charts\",\n  \"victory-charts\": {\n    \"chartType\": \"bar\",\n    \"themeColor\": \"gold\",\n    \"zoom\": \"false\",\n    \"legendPosition\": \"bottom\",\n    \"title\": \"Person\",\n    \"description\": \"\",\n    \"paddingBottom\": \"100\",\n    \"paddingLeft\": \"100\",\n    \"paddingRight\": \"10\",\n    \"paddingTop\": \"10\",\n    \"gridx\": \"true\",\n    \"gridy\": \"false\",\n    \"animate\": \"false\",\n    \"animationDuration\": \"400\",\n    \"animationEasing\": \"linear\",\n    \"donutTitle\": \"Data\",\n    \"donutSubTitle\": \"\",\n    \"fixLabelsOverlap\": \"false\"\n  },\n  \"chart\": {\n    \"width\": \"600\",\n    \"height\": \"400\"\n  },\n  \"filter\": {\n    \"enabled\": \"true\",\n    \"listening\": \"true\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 0\",\n            \"column\": \"Column 0\"\n          },\n          {\n            \"source\": \"Column 1\",\n            \"column\": \"Column 1\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
+              },
+              "parts": []
+            }
+          ]
+        },
+        {
+          "span": "7",
           "height": "12",
           "properties": {},
           "rows": [],
@@ -40,7 +56,7 @@
               "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
               "properties": {
                 "componentId": "filtered-table",
-                "json": "{\n  \"uuid\": \"gwt-uid-4179\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"filtered-table\",\n  \"filtered-table\": {\n    \"alertColumn\": \"\",\n    \"alertDanger\": \"\",\n    \"alertGood\": \"\",\n    \"alertGreat\": \"\"\n  },\n  \"chart\": {\n    \"width\": \"800\",\n    \"height\": \"300\"\n  },\n  \"filter\": {\n    \"listening\": \"true\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 0\",\n            \"column\": \"Column 0\"\n          },\n          {\n            \"source\": \"Column 1\",\n            \"column\": \"Column 1\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
+                "json": "{\n  \"uuid\": \"gwt-uid-4179\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"filtered-table\",\n  \"filtered-table\": {\n    \"alertColumn\": \"\",\n    \"alertDanger\": \"\",\n    \"alertGood\": \"\",\n    \"alertGreat\": \"\"\n  },\n  \"chart\": {\n    \"width\": \"800\",\n    \"height\": \"300\"\n  },\n  \"filter\": {\n    \"listening\": \"true\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"a057840e-c918-414b-a750-053bba4b7bab\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"Column 0\",\n            \"column\": \"Column 0\"\n          },\n          {\n            \"source\": \"Column 1\",\n            \"column\": \"Column 1\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  },\n  \"columns\": [\n    {\n      \"id\": \"Column 0\",\n      \"name\": \"Name\",\n      \"expression\": \"value\"\n    },\n    {\n      \"id\": \"Column 1\",\n      \"name\": \"Age\",\n      \"expression\": \"value\"\n    }\n  ]\n}"
               },
               "parts": []
             }

@@ -50,14 +50,14 @@
       "type": "text",
       "defaultValue": "Chart",
       "label": "Title",
-      "category": "Attributes"
+      "category": "Aria Attributes"
     },
     {
       "name": "description",
       "type": "text",
       "defaultValue": "Chart Description",
       "label": "Description",
-      "category": "Attributes"
+      "category": "Aria Attributes"
     },
     {
       "name": "paddingBottom",
@@ -99,6 +99,13 @@
       "type": "boolean",
       "defaultValue": "false",
       "label": "Grid Y",
+      "category": "Axis"
+    },
+    {
+      "name": "fixLabelsOverlap",
+      "type": "boolean",
+      "defaultValue": "false",
+      "label": "Fix Labels Overlap",
       "category": "Axis"
     },
     {

@@ -24,8 +24,13 @@ export abstract class XYChart extends BaseChart {
         themeColor={themeColor}
         themeVariant={themeVariant}
       >
-        <ChartAxis showGrid={this.props.grid.y} />
-        <ChartAxis dependentAxis showGrid={this.props.grid.x} tickFormat={t => numeral(t).format(this.pattern())} />
+        <ChartAxis showGrid={this.props.grid.y} fixLabelOverlap={this.props.fixLabelsOverlap} />
+        <ChartAxis
+          dependentAxis
+          showGrid={this.props.grid.x}
+          tickFormat={t => numeral(t).format(this.pattern())}
+          fixLabelOverlap={this.props.fixLabelsOverlap}
+        />
         {this.buildChartGroup()}
       </Chart>
     );

@@ -16,7 +16,7 @@
 import { Card, CardBody, CardTitle, Flex, FlexItem, CardFooter, Alert } from "@patternfly/react-core";
 import * as React from "react";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState } from "react";
 
 export interface CardInfo {
   title: string;

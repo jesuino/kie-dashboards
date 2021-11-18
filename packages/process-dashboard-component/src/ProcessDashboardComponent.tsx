@@ -15,60 +15,20 @@
  */
 
 import * as React from "react";
-import { Column, ColumnType, ComponentController, DataSet, FilterRequest } from "@dashbuilder-js/component-api";
+import { ColumnType, ComponentController, DataSet } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
 import { PfCard } from "@kie-dashboards/card-base";
-import { Alert, DataListText, Flex, FlexItem, Text, TextContent } from "@patternfly/react-core";
-import { VictoryChart } from "@kie-dashboards/victory-chart-base";
-import { CardFilter, CardInfo } from "@kie-dashboards/card-filter-base";
-import { byStatus, byUser, byStartDay } from "./DataSetMappers";
+import { Alert, Flex, FlexItem, Text, TextContent } from "@patternfly/react-core";
+import { VictoryChart, VictoryChartCard } from "@kie-dashboards/victory-chart-base";
+import { byStatus, byUser, byStartDay, toProcessInstanceSummary } from "./DataSetMappers";
+import { ProcessInstanceSummary } from "./ProcessInstanceSummary";
+import { STATUS_ACTIVE, STATUS_COMPLETED, STATUS_ABORTED } from "./ProcessStatus";
+import { SLA_VIOLATED } from "./Sla";
 
 const DEFAULT_BG_COLOR = "#EEEEEE";
 
-export interface ProcessStatus {
-  code: number;
-  name: string;
-}
-
-interface Sla {
-  code: number;
-  name: string;
-}
-
-const STATUS_ACTIVE = { code: 1, name: "Active" };
-const STATUS_COMPLETED = { code: 2, name: "Completed" };
-const STATUS_ABORTED = { code: 3, name: "Aborted" };
-
-const PROCESS_STATUSES: ProcessStatus[] = [
-  { code: 0, name: "Pending" },
-  STATUS_ACTIVE,
-  STATUS_COMPLETED,
-  STATUS_ABORTED,
-  { code: 4, name: "Suspended" }
-];
-
-const SLA_VIOLATED = { code: 3, name: "Violated" };
-
-const SLAS: Sla[] = [
-  { code: 0, name: "NA" },
-  { code: 1, name: "Pending" },
-  { code: 2, name: "MET" },
-  SLA_VIOLATED,
-  { code: 4, name: "Aborted" }
-];
-
 interface Props {
   controller: ComponentController;
-}
-
-export interface ProcessInstanceSummary {
-  processId: string;
-  processInstanceId: number;
-  type: number;
-  status: ProcessStatus;
-  slaCompliance: Sla;
-  startDate: string;
-  userIdentity: string;
 }
 
 interface ProcessDashboardState {
@@ -77,13 +37,6 @@ interface ProcessDashboardState {
 
   // main dataset
   processInstancesSummary?: ProcessInstanceSummary[];
-
-  // the selected processes is maintained on this component
-  selectedProcess?: string;
-  selectedProcessIndex?:number;
-
-  // filter
-  cardsInfo: CardInfo[];
 
   // cards information
   activeProcesses?: number;
@@ -100,50 +53,25 @@ interface ProcessDashboardState {
 const validate = (dataSet: DataSet): string | undefined => {
   const columns = dataSet.columns;
   if (
-    columns.length < 7 ||
-    (columns[0].type !== ColumnType.TEXT && columns[0].type !== ColumnType.LABEL) ||
+    columns.length < 6 ||
+    columns[0].type !== ColumnType.NUMBER ||
     columns[1].type !== ColumnType.NUMBER ||
     columns[2].type !== ColumnType.NUMBER ||
     columns[3].type !== ColumnType.NUMBER ||
-    columns[4].type !== ColumnType.NUMBER ||
-    columns[5].type !== ColumnType.DATE ||
-    columns[6].type !== ColumnType.LABEL
+    columns[4].type !== ColumnType.DATE ||
+    columns[5].type !== ColumnType.LABEL
   ) {
     return `
-    Invalid dataset. Expected 7 columns with the types TEXT or LABEL, TEXT or LABEL, NUMBER, NUMBER, NUMBER, DATE and LABEL. 
-    These columns should be process id (or name), process instance id, type, status, sla compliance, start date and user identity.
+    Invalid dataset. Expected 6 columns with the types NUMBER, NUMBER, NUMBER, DATE and LABEL. 
+    These columns should be process instance id, type, status, sla compliance, start date and user identity.
     `;
   }
 
   return undefined;
 };
 
-const toProcessInstanceSummary = (dataSet: DataSet): ProcessInstanceSummary[] => {
-  const list: ProcessInstanceSummary[] = [];
-
-  dataSet.data.forEach(line => {
-    list.push({
-      processId: line[0],
-      processInstanceId: +line[1],
-      type: +line[2],
-      status: PROCESS_STATUSES.filter(s => s.code === +line[3])[0],
-      slaCompliance: SLAS.filter(s => s.code == +line[4])[0],
-      startDate: line[5] || "",
-      userIdentity: line[6]
-    });
-  });
-  return list;
-};
-
-const cardsInfo = (instances: ProcessInstanceSummary[]): CardInfo[] => {
-  const processIdsMap = new Map<string, CardInfo>();
-  instances.forEach(p => processIdsMap.set(p.processId, { title: p.processId }));
-  return Array.from(processIdsMap.values());
-};
-
 export function ProcessDashboardComponent(props: Props) {
   const [processDashboardState, setProcessDashboardState] = useState<ProcessDashboardState>({
-    cardsInfo: [],
     backgroundColor: DEFAULT_BG_COLOR
   });
 
@@ -166,20 +94,11 @@ export function ProcessDashboardComponent(props: Props) {
       }
       props.controller.configurationOk();
 
-      const processInstancesSummaries = toProcessInstanceSummary(_dataset).filter(p => p.processId === processDashboardState.selectedProcess);
-
-      const _cardsInfo = cardsInfo(processInstancesSummaries);
-      let selectedCardIndex = _cardsInfo.findIndex(c => c.title === processDashboardState.selectedProcess);
-      if (selectedCardIndex === -1 && _cardsInfo.length > 0) {
-        selectedCardIndex = 0;
-      }
+      const processInstancesSummaries = toProcessInstanceSummary(_dataset);
 
       setProcessDashboardState((dashboarState: ProcessDashboardState) => {
         return {
-          ...dashboarState,
-          selectedProcess: _cardsInfo[selectedCardIndex].title,
-          selectedProcessIndex: selectedCardIndex,
-          cardsInfo: _cardsInfo,
+          ...dashboarState,          
           activeProcesses: processInstancesSummaries.filter(p => p.status === STATUS_ACTIVE).length,
           completedProcesses: processInstancesSummaries.filter(p => p.status === STATUS_COMPLETED).length,
           abortedProcesses: processInstancesSummaries.filter(p => p.status === STATUS_ABORTED).length,
@@ -202,14 +121,6 @@ export function ProcessDashboardComponent(props: Props) {
         >
           {processDashboardState.processInstancesSummary && processDashboardState.processInstancesSummary.length > 0 ? (
             <>
-              <FlexItem>
-                <TextContent>
-                  <Text component={"h1"}>Processes</Text>
-                </TextContent>
-              </FlexItem>
-              <FlexItem>
-                <CardFilter selectedIndex={processDashboardState.selectedProcessIndex} cardWidth={"300px"} cardsInfos={processDashboardState.cardsInfo} onCardSelected={i => {}} />
-              </FlexItem>
               <FlexItem>
                 <TextContent>
                   <Text component={"h2"}>Summary</Text>
@@ -271,7 +182,7 @@ export function ProcessDashboardComponent(props: Props) {
               <FlexItem>
                 <Flex spaceItems={{ default: "spaceItems2xl" }}>
                   <FlexItem>
-                    <VictoryChart
+                    <VictoryChartCard
                       type="pie"
                       title="Processes by Status"
                       backgroundColor="white"
@@ -288,7 +199,7 @@ export function ProcessDashboardComponent(props: Props) {
                     />
                   </FlexItem>
                   <FlexItem>
-                    <VictoryChart
+                    <VictoryChartCard
                       type="line"
                       title="Start day"
                       backgroundColor="white"
@@ -308,7 +219,7 @@ export function ProcessDashboardComponent(props: Props) {
                     />
                   </FlexItem>
                   <FlexItem style={{ marginBottom: "20px" }}>
-                    <VictoryChart
+                    <VictoryChartCard
                       type="bar"
                       title="Processes Started by User"
                       backgroundColor="white"

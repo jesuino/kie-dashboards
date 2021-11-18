@@ -33,8 +33,8 @@ interface Props {
 
 export function VictoryChartComponent(props: Props) {
   const [victoryChartProps, setVictoryChartProps] = useState<VictoryChartProps>({
-    width: 600,
-    height: 300,
+    width: 0,
+    height: 0,
     type: "bar",
     themeColor: "blue",
     themeVariant: "light",
@@ -52,25 +52,23 @@ export function VictoryChartComponent(props: Props) {
           themeColor: (params.get("themeColor") as ThemeColorType) || "multi",
           themeVariant: (params.get("themeVariant") as ThemeVariantType) || "light",
 
-          ariaTitle:  params.get("title"),
+          ariaTitle: params.get("title"),
           ariaDescription: params.get("description"),
-
-          width: +params.get("width") || 1200,
-          height: +params.get("height") || 800,
 
           title: params.get("title"),
           description: params.get("description"),
 
           legendPosition: params.get("legendPosition") || "bottom",
 
-          paddingBottom: +params.get("paddingBottom") || 0 ,
+          paddingBottom: +params.get("paddingBottom") || 0,
           paddingRight: +params.get("paddingRight") || 0,
-          paddingLeft: +params.get("paddingLeft") || 200,
+          paddingLeft: +params.get("paddingLeft") || 90,
           paddingTop: +params.get("paddingTop") || 0,
 
           zoom: params.get("zoom") === "true",
           gridX: params.get("gridx") === "true",
           gridY: params.get("gridy") === "true",
+          fixLabelsOverlap: params.get("fixLabelsOverlap") === "true",
 
           animate: params.get("animate") === "true",
           animationDuration: +params.get("animationDuration") || 200,
@@ -78,6 +76,7 @@ export function VictoryChartComponent(props: Props) {
 
           donutTitle: (params.get("donutTitle") as string) || "",
           donutSubTitle: (params.get("donutSubTitle") as string) || "",
+
           dataset: null
         };
       });

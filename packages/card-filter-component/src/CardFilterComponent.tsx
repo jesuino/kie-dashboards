@@ -62,7 +62,7 @@ export function CardFilterComponent(props: Props) {
         return {
           ...cardFilterState,
           wrap: params.get(WRAP_PROP) === "true",
-          cardWitdh: params.get(CARD_WIDTH_PROP) || DEFAULT_CARD_WIDTH,
+          cardWidth: params.get(CARD_WIDTH_PROP) || DEFAULT_CARD_WIDTH,
           cardHeight: params.get(CARD_HEIGHT_PROP) || DEFAULT_CARD_HEIGHT
         };
       });
