@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
-export * from "./ProcessStatus";
-export * from "./Sla";
-export * from "./TaskStatus";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { ComponentDev } from "@dashbuilder-js/component-dev";
+import { ComponentApi } from "@dashbuilder-js/component-api";
+import { TaskListComponent } from "./TaskListComponent";
+
+const api = new ComponentApi();
+
+ReactDOM.render(<TaskListComponent controller={api.getComponentController()} />, document.getElementById("app")!);
+
+new ComponentDev().start();

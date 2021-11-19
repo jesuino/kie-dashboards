@@ -1,0 +1,50 @@
+{
+  "uuid": "06d86bc1-4381-4800-aab2-8dd7223603aa",
+  "name": "tasks list dataset",
+  "provider": "REMOTE",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dataSource": "${org.kie.server.persistence.ds}",
+  "dbSQL": "select processId, processInstanceId, name, taskId, createdOn, lastModificationDate, actualOwner, status from AuditTaskImpl",
+  "queryTarget": "CUSTOM",
+  "serverTemplateId": "sample-server",
+  "allColumns": false,
+  "columns": [
+    {
+      "id": "TASKID",
+      "type": "number"
+    },
+    {
+      "id": "PROCESSINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "STATUS",
+      "type": "label"
+    },
+    {
+      "id": "CREATEDON",
+      "type": "date"
+    },
+    {
+      "id": "LASTMODIFICATIONDATE",
+      "type": "date"
+    },
+    {
+      "id": "ACTUALOWNER",
+      "type": "label"
+    },
+    {
+      "id": "PROCESSID",
+      "type": "label"
+    },
+    {
+      "id": "NAME",
+      "type": "label"
+    }
+  ]
+}
