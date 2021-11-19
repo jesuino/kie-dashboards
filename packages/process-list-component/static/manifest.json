@@ -1,12 +1,12 @@
 {
-  "name": "Process Dashboard",
+  "name": "Process List",
   "category": "Patternfly 4",
   "icon": "pficon pficon-messages",
   "parameters": [
     {
       "name": "backgroundColor",
       "type": "text",
-      "defaultValue": "#EEEEEE",
+      "defaultValue": "#FEFEFE",
       "label": "Background Color"
     }
   ]

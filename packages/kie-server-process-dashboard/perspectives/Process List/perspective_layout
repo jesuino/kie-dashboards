@@ -1,0 +1,30 @@
+{
+  "version": 3,
+  "name": "Process List",
+  "style": "FLUID",
+  "layoutProperties": {},
+  "rows": [
+    {
+      "height": "12",
+      "properties": {},
+      "layoutColumns": [
+        {
+          "span": "12",
+          "height": "12",
+          "properties": {},
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
+              "properties": {
+                "componentId": "process-list-component",
+                "json": "{\n  \"uuid\": \"gwt-uid-366\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"process-list-component\",\n  \"process-list-component\": {\n    \"backgroundColor\": \"#FEFEFE\"\n  },\n  \"chart\": {\n    \"width\": \"1500\",\n    \"height\": \"900\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"5357395d-41e2-4123-8743-aa59f1d0382d\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSINSTANCEID\",\n            \"column\": \"PROCESSINSTANCEID\"\n          },\n          {\n            \"source\": \"PROCESSNAME\",\n            \"column\": \"PROCESSNAME\"\n          },\n          {\n            \"source\": \"STATUS\",\n            \"column\": \"STATUS\"\n          },\n          {\n            \"source\": \"START_DATE\",\n            \"column\": \"START_DATE\"\n          },\n          {\n            \"source\": \"END_DATE\",\n            \"column\": \"END_DATE\"\n          },\n          {\n            \"source\": \"SLACOMPLIANCE\",\n            \"column\": \"SLACOMPLIANCE\"\n          },\n          {\n            \"source\": \"USER_IDENTITY\",\n            \"column\": \"USER_IDENTITY\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
+              },
+              "parts": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

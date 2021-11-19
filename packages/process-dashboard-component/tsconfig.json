@@ -3,5 +3,5 @@
   "compilerOptions": {
     "declaration": false
   },
-  "include": ["src", "../pfcard-base/src/PfCard.tsx"]
+  "include": ["src", "../pfcard-base/src/PfCard.tsx", "../process-model/src/ProcessStatus.tsx"]
 }

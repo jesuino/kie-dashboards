@@ -1,0 +1,104 @@
+{
+  "init": [
+    {
+      "key": "backgroundColor",
+      "value": "#EEEEEE"
+    }
+  ],
+  "dataSet": {
+    "columns": [
+      {
+        "name": "InstanceId",
+        "type": "NUMBER",
+        "settings": {
+          "columnId": "processInstanceId",
+          "columnName": "InstanceId",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": "#"
+        }
+      },
+      {
+        "name": "Name",
+        "type": "TEXT",
+        "settings": {
+          "columnId": "Name",
+          "columnName": "Name",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": "#"
+        }
+      },
+
+      {
+        "name": "Status",
+        "type": "NUMBER",
+        "settings": {
+          "columnId": "status",
+          "columnName": "Status",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": "#"
+        }
+      },
+      {
+        "name": "Start Date",
+        "type": "DATE",
+        "settings": {
+          "columnId": "startDate",
+          "columnName": "Start Date",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": null
+        }
+      },
+      {
+        "name": "End Date",
+        "type": "DATE",
+        "settings": {
+          "columnId": "endDate",
+          "columnName": "End Date",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": null
+        }
+      },
+      {
+        "name": "slaCompliance",
+        "type": "NUMBER",
+        "settings": {
+          "columnId": "slaCompliance",
+          "columnName": "SLA Compliance",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": "#"
+        }
+      },
+
+      {
+        "name": "User Identity",
+        "type": "LABEL",
+        "settings": {
+          "columnId": "userIdentity",
+          "columnName": "User",
+          "valueExpression": "value",
+          "emptyTemplate": "---",
+          "valuePattern": null
+        }
+      }
+    ],
+    "data": [
+      [1, "Process name 1", 1, "2021-08-09T22:51:38Z", "2021-08-09T22:51:38Z", 1, "mark"],
+      [2, "Process name 2", 2, "2021-08-09T22:52:09Z", "2021-08-09T22:51:38Z", 2, "porcelli"],
+      [3, "Process name 2", 2, "2021-08-09T22:53:36Z", "2021-08-09T22:51:38Z", 2, "eder"],
+      [4, "Process name 3", 2, "2021-08-09T23:07:05Z", "2021-08-09T22:51:38Z", 2, "eder"],
+      [5, "Process name 1", 2, "2021-08-17T14:22:56Z", "2021-08-09T22:51:38Z", 3, "eder"],
+      [6, "Process name 2", 1, "2021-08-22T16:31:42Z", "2021-08-09T22:51:38Z", 2, "porcelli"],
+      [7, "Process name 5", 1, "2021-07-29T22:51:38Z", "2021-08-09T22:51:38Z", 2, "mark"],
+      [8, "Process name 5", 3, "2021-08-02T22:51:38Z", "2021-08-09T22:51:38Z", 3, "mark"],
+      [9, "Process name 7", 3, "2021-08-22T16:31:42Z", "2021-08-09T22:51:38Z", 1, "porcelli"],
+      [10, "Process name 7", 4, "2021-08-23T16:31:42Z", "2021-08-09T22:51:38Z", 2, "eder"],
+      [11, "Process name 3", 2, "2021-08-21T16:31:42Z", "2021-08-09T22:51:38Z", 3, "tiago"]
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "uuid": "5357395d-41e2-4123-8743-aa59f1d0382d",
+  "name": "process list dataset",
+  "provider": "REMOTE",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dataSource": "${org.kie.server.persistence.ds}",
+  "dbSQL": "select  processInstanceId, processName, status, start_date, end_date, slaCompliance, user_identity from ProcessInstanceLog\n",
+  "queryTarget": "CUSTOM",
+  "serverTemplateId": "sample-server",
+  "allColumns": false,
+  "columns": [
+    {
+      "id": "PROCESSINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "STATUS",
+      "type": "number"
+    },
+    {
+      "id": "SLACOMPLIANCE",
+      "type": "number"
+    },
+    {
+      "id": "USER_IDENTITY",
+      "type": "label"
+    },
+    {
+      "id": "END_DATE",
+      "type": "date"
+    },
+    {
+      "id": "START_DATE",
+      "type": "date"
+    },
+    {
+      "id": "PROCESSNAME",
+      "type": "label"
+    }
+  ]
+}

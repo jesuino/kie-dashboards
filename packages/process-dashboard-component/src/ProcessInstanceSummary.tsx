@@ -1,6 +1,4 @@
-import { Sla } from "./Sla";
-import { ProcessStatus } from "./ProcessStatus";
-
+import { Sla, ProcessStatus } from "@kie-dashboards/process-model";
 
 export interface ProcessInstanceSummary {
   processInstanceId: number;

@@ -1,14 +1,12 @@
 import { ColumnType, DataSet } from "@dashbuilder-js/component-api";
-import { ProcessStatus, PROCESS_STATUSES } from "./ProcessStatus";
 import { ProcessInstanceSummary } from "./ProcessInstanceSummary";
-import { ALL_SLAS as SLAS } from "./Sla";
+import { PROCESS_STATUSES, ALL_SLAS, ProcessStatus } from "@kie-dashboards/process-model";
 
 export const byStartDay = (instances: ProcessInstanceSummary[]): DataSet => {
   const data: string[][] = [];
   const summedByDay = new Map<string, number>();
   instances.forEach(i => {
-    const startDate = new Date(i.startDate);
-    const day = `${startDate.getDay()}/${startDate.getMonth()}/${startDate.getFullYear()}`;
+    const day = new Date(i.startDate).toDateString();
     const totalByDay = summedByDay.get(day) || 0;
     summedByDay.set(day, totalByDay + 1);
   });
@@ -17,7 +15,7 @@ export const byStartDay = (instances: ProcessInstanceSummary[]): DataSet => {
     data.push([k, `${v}`]);
   });
 
-  data.sort((l1, l2) => l1[0].localeCompare(l2[0]));
+  data.sort((l1, l2) => l2[0].localeCompare(l1[0]));
   return {
     columns: [
       {
@@ -127,7 +125,6 @@ export const byStatus = (instances: ProcessInstanceSummary[]): DataSet => {
   };
 };
 
-
 export const toProcessInstanceSummary = (dataSet: DataSet): ProcessInstanceSummary[] => {
   const list: ProcessInstanceSummary[] = [];
 
@@ -136,7 +133,7 @@ export const toProcessInstanceSummary = (dataSet: DataSet): ProcessInstanceSumma
       processInstanceId: +line[0],
       type: +line[1],
       status: PROCESS_STATUSES.filter(s => s.code === +line[2])[0],
-      slaCompliance: SLAS.filter(s => s.code == +line[3])[0],
+      slaCompliance: ALL_SLAS.filter(s => s.code == +line[3])[0],
       startDate: line[4] || "",
       userIdentity: line[5]
     });

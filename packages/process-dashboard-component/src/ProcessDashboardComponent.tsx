@@ -22,8 +22,14 @@ import { Alert, Flex, FlexItem, Text, TextContent } from "@patternfly/react-core
 import { VictoryChart, VictoryChartCard } from "@kie-dashboards/victory-chart-base";
 import { byStatus, byUser, byStartDay, toProcessInstanceSummary } from "./DataSetMappers";
 import { ProcessInstanceSummary } from "./ProcessInstanceSummary";
-import { STATUS_ACTIVE, STATUS_COMPLETED, STATUS_ABORTED } from "./ProcessStatus";
-import { SLA_VIOLATED } from "./Sla";
+import {
+  SLA_VIOLATED,
+  STATUS_ACTIVE,
+  STATUS_COMPLETED,
+  STATUS_ABORTED,
+  Sla,
+  ProcessStatus
+} from "@kie-dashboards/process-model";
 
 const DEFAULT_BG_COLOR = "#EEEEEE";
 
@@ -98,7 +104,7 @@ export function ProcessDashboardComponent(props: Props) {
 
       setProcessDashboardState((dashboarState: ProcessDashboardState) => {
         return {
-          ...dashboarState,          
+          ...dashboarState,
           activeProcesses: processInstancesSummaries.filter(p => p.status === STATUS_ACTIVE).length,
           completedProcesses: processInstancesSummaries.filter(p => p.status === STATUS_COMPLETED).length,
           abortedProcesses: processInstancesSummaries.filter(p => p.status === STATUS_ABORTED).length,
@@ -242,9 +248,7 @@ export function ProcessDashboardComponent(props: Props) {
               </FlexItem>
             </>
           ) : (
-            <Alert title={"No Data"}>
-              {"No data has been supplied to build the process dashboard or the provided dataset is invalid."}
-            </Alert>
+            <Alert title={"No Data"}>{"No data has been supplied to build the process dashboard."}</Alert>
           )}
         </Flex>
       </div>

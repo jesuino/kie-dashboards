@@ -1,5 +1,5 @@
 {
-  "name": "@kie-dashboards/process-dashboard-component",
+  "name": "@kie-dashboards/process-list-component",
   "version": "0.0.0",
   "description": "",
   "license": "Apache-2.0",
@@ -12,13 +12,14 @@
     "lint": "tslint -c ../../tslint.json 'src/**/*.{ts,tsx,js,jsx}'",
     "test": "jest --silent --verbose --passWithNoTests",
     "test:clearCache": "jest --clearCache",
-    "build:fast": "rm -rf dist && webpack && rm -rf ../components/process-dashboard-component && cp -r dist/ ../components/process-dashboard-component",
+    "build:fast": "rm -rf dist && webpack && rm -rf ../components/process-list-component && cp -r dist/ ../components/process-list-component",
     "build:prod": "yarn run lint && yarn test && yarn run build:fast",
     "start": "webpack-dev-server -d --host 0.0.0.0 --env WEBPACK_DEV_SERVER=true"
   },
   "dependencies": {
     "@kie-dashboards/process-model": "0.0.0",
     "@kie-dashboards/card-base": "0.0.0",
+    "@kie-dashboards/filtered-table-base": "0.0.0",
     "@kie-dashboards/victory-chart-base": "0.0.0"
   },
   "babel": {
