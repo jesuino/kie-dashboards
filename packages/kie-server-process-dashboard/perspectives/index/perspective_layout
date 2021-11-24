@@ -1,0 +1,45 @@
+{
+  "version": 3,
+  "name": "index",
+  "style": "FLUID",
+  "layoutProperties": {
+    "background-color": "#EFEFEF"
+  },
+  "rows": [
+    {
+      "height": "12",
+      "properties": {},
+      "layoutColumns": [
+        {
+          "span": "12",
+          "height": "12",
+          "properties": {},
+          "rows": [],
+          "layoutComponents": [
+            {
+              "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDragComponent",
+              "properties": {
+                "tab-navigation.height": "1200px",
+                "componentId": "tab-navigation",
+                "tab-navigation.tab4Target": "",
+                "tab-navigation.isPage": "true",
+                "tab-navigation.width": "1500px",
+                "tab-navigation.tab3Title": "Task List",
+                "tab-navigation.tab1Title": "Process Dashboard",
+                "tab-navigation.tab1Target": "Process Dashboard",
+                "tab-navigation.tab2Target": "Process List",
+                "tab-navigation.tab2Title": "Process List",
+                "tab-navigation.modelName": "",
+                "tab-navigation.tab1tTarget": "Process Dashboard",
+                "tab-navigation.tab3Target": "Task List",
+                "tab-navigation.tab4Title": "",
+                "height": "900px"
+              },
+              "parts": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Tabs Navigation",
+  "category": "Patternfly 4",
+  "icon": "pficon pficon-messages",
+  "noData": true,
+  "parameters": [    
+    {
+      "name": "isPage",
+      "type": "boolean",
+      "defaultValue": "",
+      "label": "Page Target",
+      "category": "Navigation"
+    },
+    {
+      "name": "width",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Width",
+      "category": "Size"
+    },
+    {
+      "name": "height",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Height",
+      "category": "Size"
+    },
+    {
+      "name": "tab1Title",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Title",
+      "category": "Tab 1"
+    },
+    {
+      "name": "tab1Target",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Target",
+      "category": "Tab 1"
+    },
+    {
+      "name": "tab2Title",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Title",
+      "category": "Tab 2"
+    },
+    {
+      "name": "tab2Target",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Target",
+      "category": "Tab 2"
+    },
+    {
+      "name": "tab3Title",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Title",
+      "category": "Tab 3"
+    },
+    {
+      "name": "tab3Target",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Target",
+      "category": "Tab 3"
+    },
+    {
+      "name": "tab4Title",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Title",
+      "category": "Tab 4"
+    },
+    {
+      "name": "tab4Target",
+      "type": "text",
+      "defaultValue": "",
+      "label": "Target",
+      "category": "Tab 4"
+    }
+  ]
+}

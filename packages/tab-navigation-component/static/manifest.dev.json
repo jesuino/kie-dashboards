@@ -1,0 +1,32 @@
+{
+  "init": [
+    {
+      "key": "width",
+      "value": "1200px"
+    },
+    {
+      "key": "height",
+      "value": "800px"
+    },
+    {
+      "key": "tab1Title",
+      "value": "Red Hat"
+    },
+    {
+      "key": "tab1Target",
+      "value": "https://www.redhat.com"
+    },
+    {
+      "key": "tab2Title",
+      "value": "DashBuilder"
+    },
+    {
+      "key": "tab2Target",
+      "value": "http://www.dashbuilder.org"
+    }
+  ],
+  "dataSet": {
+    "columns": [],
+    "data": []
+  }
+}
