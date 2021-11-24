@@ -2,7 +2,12 @@
   "version": 3,
   "name": "Process List",
   "style": "FLUID",
-  "layoutProperties": {},
+  "layoutProperties": {
+    "background-color": "#EFEFEF",
+    "width": "100%",
+    "float": "none",
+    "height": "100%"
+  },
   "rows": [
     {
       "height": "12",

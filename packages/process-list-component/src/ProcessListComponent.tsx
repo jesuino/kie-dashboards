@@ -152,7 +152,12 @@ export function ProcessListComponent(props: Props) {
   return (
     <>
       <Flex
-        style={{ backgroundColor: processListState.backgroundColor, paddingLeft: "10px", paddingTop: "10px"}}
+        style={{
+          backgroundColor: processListState.backgroundColor,
+          paddingLeft: "10px",
+          paddingTop: "10px",
+          height: "100%"
+        }}
         direction={{ default: "column" }}
       >
         {processListState.tableData.length > 0 ? (

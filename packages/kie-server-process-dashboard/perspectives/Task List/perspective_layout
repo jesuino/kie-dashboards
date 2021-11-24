@@ -2,7 +2,11 @@
   "version": 3,
   "name": "Task List",
   "style": "FLUID",
-  "layoutProperties": {},
+  "layoutProperties": {
+    "background-color": "#EFEFEF",
+    "width": "100%",
+    "height": "100%"
+  },
   "rows": [
     {
       "height": "12",
@@ -18,7 +22,7 @@
               "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
               "properties": {
                 "componentId": "task-list-component",
-                "json": "{\n  \"uuid\": \"gwt-uid-501\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"task-list-component\",\n  \"task-list-component\": {\n    \"backgroundColor\": \"#EFEFEF\"\n  },\n  \"chart\": {\n    \"width\": \"1500\",\n    \"height\": \"900\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"06d86bc1-4381-4800-aab2-8dd7223603aa\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSID\",\n            \"column\": \"PROCESSID\"\n          },\n          {\n            \"source\": \"PROCESSINSTANCEID\",\n            \"column\": \"PROCESSINSTANCEID\"\n          },\n          {\n            \"source\": \"NAME\",\n            \"column\": \"NAME\"\n          },\n          {\n            \"source\": \"TASKID\",\n            \"column\": \"TASKID\"\n          },\n          {\n            \"source\": \"CREATEDON\",\n            \"column\": \"CREATEDON\"\n          },\n          {\n            \"source\": \"LASTMODIFICATIONDATE\",\n            \"column\": \"LASTMODIFICATIONDATE\"\n          },\n          {\n            \"source\": \"ACTUALOWNER\",\n            \"column\": \"ACTUALOWNER\"\n          },\n          {\n            \"source\": \"STATUS\",\n            \"column\": \"STATUS\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
+                "json": "{\n  \"uuid\": \"gwt-uid-501\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"task-list-component\",\n  \"task-list-component\": {\n    \"backgroundColor\": \"#EFEFEF\"\n  },\n  \"chart\": {\n    \"width\": \"1500\",\n    \"height\": \"900\"\n  },\n  \"refresh\": {\n    \"interval\": \"3\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"06d86bc1-4381-4800-aab2-8dd7223603aa\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSID\",\n            \"column\": \"PROCESSID\"\n          },\n          {\n            \"source\": \"PROCESSINSTANCEID\",\n            \"column\": \"PROCESSINSTANCEID\"\n          },\n          {\n            \"source\": \"NAME\",\n            \"column\": \"NAME\"\n          },\n          {\n            \"source\": \"TASKID\",\n            \"column\": \"TASKID\"\n          },\n          {\n            \"source\": \"CREATEDON\",\n            \"column\": \"CREATEDON\"\n          },\n          {\n            \"source\": \"LASTMODIFICATIONDATE\",\n            \"column\": \"LASTMODIFICATIONDATE\"\n          },\n          {\n            \"source\": \"ACTUALOWNER\",\n            \"column\": \"ACTUALOWNER\"\n          },\n          {\n            \"source\": \"STATUS\",\n            \"column\": \"STATUS\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}"
               },
               "parts": []
             }

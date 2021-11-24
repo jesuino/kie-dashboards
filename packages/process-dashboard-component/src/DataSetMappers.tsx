@@ -5,6 +5,9 @@ import { PROCESS_STATUSES, ALL_SLAS, ProcessStatus } from "@kie-dashboards/proce
 export const byStartDay = (instances: ProcessInstanceSummary[]): DataSet => {
   const data: string[][] = [];
   const summedByDay = new Map<string, number>();
+
+  instances.sort((p1, p2) => new Date(p1.startDate).getTime() - new Date(p2.startDate).getTime());
+
   instances.forEach(i => {
     const day = new Date(i.startDate).toDateString();
     const totalByDay = summedByDay.get(day) || 0;
@@ -15,7 +18,6 @@ export const byStartDay = (instances: ProcessInstanceSummary[]): DataSet => {
     data.push([k, `${v}`]);
   });
 
-  data.sort((l1, l2) => l2[0].localeCompare(l1[0]));
   return {
     columns: [
       {

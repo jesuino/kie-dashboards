@@ -166,7 +166,13 @@ export function TaskListComponent(props: Props) {
   return (
     <>
       <Flex
-        style={{ backgroundColor: taskListState.backgroundColor, paddingLeft: "10px", paddingTop: "10px" }}
+        style={{
+          backgroundColor: taskListState.backgroundColor,
+          paddingLeft: "10px",
+          paddingTop: "10px",
+          height: "100%"
+        }}
+        grow={{ default: "grow" }}
         direction={{ default: "column" }}
       >
         {taskListState.tableData.length > 0 ? (

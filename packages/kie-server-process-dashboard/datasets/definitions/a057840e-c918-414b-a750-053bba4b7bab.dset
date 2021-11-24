@@ -13,14 +13,10 @@
   "columns": [
     {
       "id": "Column 0",
-      "type": "number"
+      "type": "label"
     },
     {
       "id": "Column 1",
-      "type": "number"
-    },
-    {
-      "id": "Column 2",
       "type": "number"
     }
   ]

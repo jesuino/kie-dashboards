@@ -120,138 +120,136 @@ export function ProcessDashboardComponent(props: Props) {
 
   return (
     <>
-      <div>
-        <Flex
-          style={{ backgroundColor: processDashboardState.backgroundColor, paddingLeft: "10px" }}
-          direction={{ default: "column" }}
-        >
-          {processDashboardState.processInstancesSummary && processDashboardState.processInstancesSummary.length > 0 ? (
-            <>
-              <FlexItem>
-                <TextContent>
-                  <Text component={"h2"}>Summary</Text>
-                </TextContent>
-              </FlexItem>
+      <Flex
+        style={{ backgroundColor: processDashboardState.backgroundColor, paddingLeft: "10px", height: "100%" }}
+        direction={{ default: "column" }}
+      >
+        {processDashboardState.processInstancesSummary && processDashboardState.processInstancesSummary.length > 0 ? (
+          <>
+            <FlexItem>
+              <TextContent>
+                <Text component={"h2"}>Summary</Text>
+              </TextContent>
+            </FlexItem>
+            <FlexItem>
+              <Flex spaceItems={{ default: "spaceItemsXl" }} grow={{ default: "grow" }}>
+                <FlexItem>
+                  <PfCard
+                    value={`${processDashboardState.activeProcesses || 0}`}
+                    color="blue"
+                    title="Active"
+                    subtitle="Process Instances"
+                    width={300}
+                    valueFontSize={"45px"}
+                  />
+                </FlexItem>
+                <FlexItem>
+                  <PfCard
+                    value={`${processDashboardState.completedProcesses || 0}`}
+                    color="green"
+                    title="Completed"
+                    subtitle="Process Instances"
+                    width={300}
+                    valueFontSize={"45px"}
+                  />
+                </FlexItem>
+                <FlexItem>
+                  <PfCard
+                    value={`${processDashboardState.abortedProcesses || 0}`}
+                    color="orange"
+                    title="Aborted"
+                    subtitle="Process Instances"
+                    width={300}
+                    valueFontSize={"45px"}
+                  />
+                </FlexItem>
+                <FlexItem>
+                  <PfCard
+                    value={`${processDashboardState.slaViolatedProcesses || 0}`}
+                    color="red"
+                    title="SLA Overdue"
+                    subtitle="Process Instances"
+                    width={300}
+                    valueFontSize={"45px"}
+                  />
+                </FlexItem>
+              </Flex>
+            </FlexItem>
 
-              <FlexItem>
-                <Flex spaceItems={{ default: "spaceItemsXl" }} grow={{ default: "grow" }}>
-                  <FlexItem>
-                    <PfCard
-                      value={`${processDashboardState.activeProcesses || 0}`}
-                      color="blue"
-                      title="Active"
-                      subtitle="Process Instances"
-                      width={300}
-                      valueFontSize={"45px"}
-                    />
-                  </FlexItem>
-                  <FlexItem>
-                    <PfCard
-                      value={`${processDashboardState.completedProcesses || 0}`}
-                      color="green"
-                      title="Completed"
-                      subtitle="Process Instances"
-                      width={300}
-                      valueFontSize={"45px"}
-                    />
-                  </FlexItem>
-                  <FlexItem>
-                    <PfCard
-                      value={`${processDashboardState.abortedProcesses || 0}`}
-                      color="orange"
-                      title="Aborted"
-                      subtitle="Process Instances"
-                      width={300}
-                      valueFontSize={"45px"}
-                    />
-                  </FlexItem>
-                  <FlexItem>
-                    <PfCard
-                      value={`${processDashboardState.slaViolatedProcesses || 0}`}
-                      color="red"
-                      title="SLA Overdue"
-                      subtitle="Process Instances"
-                      width={300}
-                      valueFontSize={"45px"}
-                    />
-                  </FlexItem>
-                </Flex>
-              </FlexItem>
+            <FlexItem>
+              {" "}
+              <TextContent>
+                <Text component={"h2"}>Charts</Text>
+              </TextContent>
+            </FlexItem>
 
-              <FlexItem>
-                {" "}
-                <TextContent>
-                  <Text component={"h2"}>Charts</Text>
-                </TextContent>
-              </FlexItem>
-
-              <FlexItem>
-                <Flex spaceItems={{ default: "spaceItems2xl" }}>
-                  <FlexItem>
-                    <VictoryChartCard
-                      type="pie"
-                      title="Processes by Status"
-                      backgroundColor="white"
-                      onValidationSuccess={() => {}}
-                      onValidationError={(message: string) => {}}
-                      width={400}
-                      height={250}
-                      themeColor="multi"
-                      themeVariant="light"
-                      staticTitle={true}
-                      dataSet={processDashboardState.processesByStatus}
-                      paddingBottom={50}
-                      legendPosition="bottom"
-                    />
-                  </FlexItem>
-                  <FlexItem>
-                    <VictoryChartCard
-                      type="line"
-                      title="Start day"
-                      backgroundColor="white"
-                      onValidationSuccess={() => {}}
-                      onValidationError={(message: string) => {}}
-                      width={400}
-                      height={250}
-                      themeColor="multi"
-                      themeVariant="light"
-                      dataSet={processDashboardState.processesByStartDate}
-                      staticTitle={true}
-                      paddingTop={10}
-                      paddingRight={10}
-                      paddingLeft={50}
-                      paddingBottom={40}
-                      gridY={true}
-                    />
-                  </FlexItem>
-                  <FlexItem style={{ marginBottom: "20px" }}>
-                    <VictoryChartCard
-                      type="bar"
-                      title="Processes Started by User"
-                      backgroundColor="white"
-                      onValidationSuccess={() => {}}
-                      onValidationError={(message: string) => {}}
-                      width={400}
-                      height={250}
-                      themeColor="multi"
-                      themeVariant="light"
-                      dataSet={processDashboardState.processesByUser}
-                      staticTitle={true}
-                      horizontalBars={true}
-                      paddingLeft={100}
-                      paddingRight={40}
-                      paddingBottom={0}
-                      gridX={true}
-                    />
-                  </FlexItem>
-                </Flex>
-              </FlexItem>
-            </>
-          ) : (
-            <Alert title={"No Data"}>{"No data has been supplied to build the process dashboard."}</Alert>
-          )}
-        </Flex>
-      </div>
+            <FlexItem>
+              <Flex spaceItems={{ default: "spaceItems2xl" }}>
+                <FlexItem>
+                  <VictoryChartCard
+                    type="pie"
+                    title="Processes by Status"
+                    backgroundColor="white"
+                    onValidationSuccess={() => {}}
+                    onValidationError={(message: string) => {}}
+                    width={400}
+                    height={250}
+                    themeColor="multi"
+                    themeVariant="light"
+                    staticTitle={true}
+                    dataSet={processDashboardState.processesByStatus}
+                    paddingBottom={50}
+                    legendPosition="bottom"
+                  />
+                </FlexItem>
+                <FlexItem>
+                  <VictoryChartCard
+                    type="line"
+                    title="Start day"
+                    backgroundColor="white"
+                    onValidationSuccess={() => {}}
+                    onValidationError={(message: string) => {}}
+                    width={400}
+                    height={250}
+                    themeColor="multi"
+                    themeVariant="light"
+                    dataSet={processDashboardState.processesByStartDate}
+                    staticTitle={true}
+                    paddingTop={10}
+                    paddingRight={10}
+                    paddingLeft={50}
+                    paddingBottom={40}
+                    gridY={true}
+                    fixLabelsOverlap={true}
+                  />
+                </FlexItem>
+                <FlexItem style={{ marginBottom: "20px" }}>
+                  <VictoryChartCard
+                    type="bar"
+                    title="Processes Started by User"
+                    backgroundColor="white"
+                    onValidationSuccess={() => {}}
+                    onValidationError={(message: string) => {}}
+                    width={400}
+                    height={250}
+                    themeColor="multi"
+                    themeVariant="light"
+                    dataSet={processDashboardState.processesByUser}
+                    staticTitle={true}
+                    horizontalBars={true}
+                    paddingLeft={100}
+                    paddingRight={40}
+                    paddingBottom={0}
+                    gridX={true}
+                  />
+                </FlexItem>
+              </Flex>
+            </FlexItem>
+          </>
+        ) : (
+          <Alert title={"No Data"}>{"No data has been supplied to build the process dashboard."}</Alert>
+        )}
+      </Flex>
     </>
   );
 }

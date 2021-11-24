@@ -9,6 +9,7 @@ COMPONENTS_DIR="$DIR/packages/components"
 MODELS_DIR="$DIR/packages/dashboards"
 MODEL_FILE="$(basename $1).zip"
 echo "Exporting to $MODEL_FILE"
+#          -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005 \
 java -jar -Ddashbuilder.export.location=$MODELS_DIR/$MODEL_FILE \
 		  -Ddashbuilder.components.dir=$COMPONENTS_DIR \
 		  -Dorg.dashbuilder.project.location=$1 \
