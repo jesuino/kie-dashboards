@@ -286,7 +286,7 @@ export function TaskListComponent(props: Props) {
                 </FlexItem>
               </Flex>
             </FlexItem>
-            <FlexItem style={{ width: "1310px" }}>
+            <FlexItem style={{ width: "1310px",  height: "600px", overflow: "auto" }}>
               <FilteredTable rows={taskListState.tableData} columns={taskListState.columns} alerts={ALERTS} />
             </FlexItem>
           </>

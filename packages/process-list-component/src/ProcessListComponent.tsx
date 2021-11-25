@@ -156,7 +156,7 @@ export function ProcessListComponent(props: Props) {
           backgroundColor: processListState.backgroundColor,
           paddingLeft: "10px",
           paddingTop: "10px",
-          height: "100%"
+          height: "100%",
         }}
         direction={{ default: "column" }}
       >
@@ -206,7 +206,7 @@ export function ProcessListComponent(props: Props) {
                 </FlexItem>
               </Flex>
             </FlexItem>
-            <FlexItem style={{ width: "1300px" }}>
+            <FlexItem style={{ width: "1300px", height: "800px", overflow: "auto" }}>
               <FilteredTable rows={processListState.tableData} columns={processListState.columns} alerts={ALERTS} />
             </FlexItem>
           </>
