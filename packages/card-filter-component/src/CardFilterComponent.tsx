@@ -20,8 +20,11 @@ import { useState, useEffect, useCallback } from "react";
 import { CardFilter, CardInfo } from "@kie-dashboards/card-filter-base";
 
 const WRAP_PROP = "wrap";
+const BACKGROUND_COLOR_PROP = "backgroundColor";
+const CARD_COLOR_PROP = "cardColor";
 const CARD_WIDTH_PROP = "cardWidth";
 const CARD_HEIGHT_PROP = "cardHeight";
+
 const DEFAULT_CARD_WIDTH = "200px";
 const DEFAULT_CARD_HEIGHT = "120px";
 
@@ -30,6 +33,8 @@ interface CardFilterState {
   cardWidth: string;
   cardHeight: string;
   wrap: boolean;
+  backgroundColor?: string;
+  cardColor?: string;
 }
 
 interface Props {
@@ -63,7 +68,9 @@ export function CardFilterComponent(props: Props) {
           ...cardFilterState,
           wrap: params.get(WRAP_PROP) === "true",
           cardWidth: params.get(CARD_WIDTH_PROP) || DEFAULT_CARD_WIDTH,
-          cardHeight: params.get(CARD_HEIGHT_PROP) || DEFAULT_CARD_HEIGHT
+          cardHeight: params.get(CARD_HEIGHT_PROP) || DEFAULT_CARD_HEIGHT,
+          backgroundColor: params.get(BACKGROUND_COLOR_PROP),
+          cardColor: params.get(CARD_COLOR_PROP)
         };
       });
     });
@@ -83,9 +90,7 @@ export function CardFilterComponent(props: Props) {
   return (
     <>
       <CardFilter
-        wrap={cardFilterState.wrap}
-        cardWidth={cardFilterState.cardWidth}
-        cardHeight={cardFilterState.cardHeight}
+        {...cardFilterState}
         onCardSelected={onCardSelected}
         cardsInfos={cardFilterState.data}
       />

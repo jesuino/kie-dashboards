@@ -11,6 +11,14 @@
     {
       "key": "cardHeight",
       "value": "100px"
+    },
+    {
+      "key": "backgroundColor",
+      "value": "#EFEFEF"
+    },
+    {
+      "key": "cardColor",
+      "value": "white"
     }
   ],
   "dataSet": {

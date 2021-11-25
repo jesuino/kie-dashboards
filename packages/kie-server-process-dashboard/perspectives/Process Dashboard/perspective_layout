@@ -4,8 +4,7 @@
   "style": "FLUID",
   "layoutProperties": {
     "background-color": "#EFEFEF",
-    "width": "100%",
-    "height": "100%"
+    "width": "20000px"
   },
   "rows": [
     {
@@ -24,7 +23,7 @@
               "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDisplayerDragComponent",
               "properties": {
                 "componentId": "card_filter",
-                "json": "{\n  \"uuid\": \"gwt-uid-415\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card_filter\",\n  \"card_filter\": {\n    \"wrap\": \"false\",\n    \"cardWidth\": \"250px\",\n    \"cardHeight\": \"60px\"\n  },\n  \"chart\": {\n    \"width\": \"1300\",\n    \"height\": \"70\"\n  },\n  \"filter\": {\n    \"enabled\": \"true\",\n    \"notification\": \"true\"\n  },\n  \"refresh\": {\n    \"interval\": \"30\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"1fc467f7-cb89-489b-a4fa-60eab0e51b8e\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"columnGroup\": {\n          \"source\": \"PROCESSNAME\",\n          \"column\": \"PROCESSNAME\",\n          \"groupStrategy\": \"DYNAMIC\",\n          \"maxIntervals\": \"15\",\n          \"emptyIntervals\": \"false\",\n          \"asc\": \"true\",\n          \"firstMonthOfYear\": \"JANUARY\",\n          \"firstDayOfWeek\": \"MONDAY\"\n        },\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSNAME\",\n            \"column\": \"PROCESSNAME\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}",
+                "json": "{\n  \"uuid\": \"gwt-uid-415\",\n  \"type\": \"EXTERNAL_COMPONENT\",\n  \"external_component_id\": \"card_filter\",\n  \"card_filter\": {\n    \"wrap\": \"false\",\n    \"cardWidth\": \"250px\",\n    \"cardHeight\": \"60px\",\n    \"backgroundColor\": \"#EFEFEF\"\n  },\n  \"chart\": {\n    \"width\": \"1300\",\n    \"height\": \"70\"\n  },\n  \"filter\": {\n    \"enabled\": \"true\",\n    \"notification\": \"true\"\n  },\n  \"refresh\": {\n    \"interval\": \"30\"\n  },\n  \"dataSetLookup\": {\n    \"dataSetUuid\": \"1fc467f7-cb89-489b-a4fa-60eab0e51b8e\",\n    \"rowCount\": \"-1\",\n    \"rowOffset\": \"0\",\n    \"groupOps\": [\n      {\n        \"columnGroup\": {\n          \"source\": \"PROCESSNAME\",\n          \"column\": \"PROCESSNAME\",\n          \"groupStrategy\": \"DYNAMIC\",\n          \"maxIntervals\": \"15\",\n          \"emptyIntervals\": \"false\",\n          \"asc\": \"true\",\n          \"firstMonthOfYear\": \"JANUARY\",\n          \"firstDayOfWeek\": \"MONDAY\"\n        },\n        \"groupFunctions\": [\n          {\n            \"source\": \"PROCESSNAME\",\n            \"column\": \"PROCESSNAME\"\n          }\n        ],\n        \"join\": \"false\"\n      }\n    ]\n  }\n}",
                 "margin-bottom": "10px",
                 "margin-right": "10px"
               },

@@ -19,11 +19,11 @@
             {
               "dragTypeName": "org.dashbuilder.client.editor.external.ExternalDragComponent",
               "properties": {
-                "tab-navigation.height": "1200px",
+                "tab-navigation.height": "3000px",
                 "componentId": "tab-navigation",
                 "tab-navigation.tab4Target": "",
                 "tab-navigation.isPage": "true",
-                "tab-navigation.width": "1500px",
+                "tab-navigation.width": "3000px",
                 "tab-navigation.tab3Title": "Task List",
                 "tab-navigation.tab1Title": "Process Dashboard",
                 "tab-navigation.tab1Target": "Process Dashboard",

@@ -20,6 +20,18 @@
       "type": "text",
       "defaultValue": "100px",
       "label": "Card Height"
+    },
+    {
+      "name": "backgroundColor",
+      "type": "text",
+      "defaultValue": "#EFEFEF",
+      "label": "Background Color"
+    },
+    {
+      "name": "cardColor",
+      "type": "text",
+      "defaultValue": "white",
+      "label": "Card Color"
     }
   ]
 }

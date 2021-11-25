@@ -25,6 +25,7 @@ export interface CardInfo {
 }
 
 interface Props {
+  cardColor?: string;
   backgroundColor?: string;
   selectedIndex?: number;
   cardsInfos: CardInfo[];
@@ -82,13 +83,12 @@ export const CardFilter = (props: Props) => {
                   isSelected={i === selectedIndex}
                   style={{
                     opacity: i === index || i === selectedIndex ? 1 : 0.6,
-                    //backgroundColor: i === selectedIndex ? "#EFEFEF" : "",
                     cursor: "pointer",
                     width: props.cardWidth,
                     height: props.cardHeight,
                     overflow: "hidden",
-                    marginBottom: "10px"
-                    //   boxShadow: i === selectedIndex ? "1px 5px 10px 0.2px lightgray" : undefined
+                    marginBottom: "10px",
+                    backgroundColor: props.cardColor || "white"
                   }}
                 >
                   <CardTitle>{card.title}</CardTitle>
