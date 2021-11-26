@@ -18,7 +18,7 @@ import * as React from "react";
 import { ColumnType, ComponentController, DataSet } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
 import { PfCard } from "@kie-dashboards/card-base";
-import { Alert, Flex, FlexItem, Text, TextContent } from "@patternfly/react-core";
+import { Alert, Flex, FlexItem, Page, PageSection, Text, TextContent } from "@patternfly/react-core";
 import { VictoryChart, VictoryChartCard } from "@kie-dashboards/victory-chart-base";
 import { byStatus, byUser, byStartDay, toProcessInstanceSummary } from "./DataSetMappers";
 import { ProcessInstanceSummary } from "./ProcessInstanceSummary";
@@ -120,19 +120,14 @@ export function ProcessDashboardComponent(props: Props) {
 
   return (
     <>
-      <Flex
-        style={{ backgroundColor: processDashboardState.backgroundColor, paddingLeft: "10px", height: "100%" }}
-        direction={{ default: "column" }}
-      >
+      <Page>
         {processDashboardState.processInstancesSummary && processDashboardState.processInstancesSummary.length > 0 ? (
           <>
-            <FlexItem>
+            <PageSection>
               <TextContent>
                 <Text component={"h2"}>Summary</Text>
               </TextContent>
-            </FlexItem>
-            <FlexItem>
-              <Flex spaceItems={{ default: "spaceItemsXl" }} grow={{ default: "grow" }}>
+              <Flex spaceItems={{ default: "spaceItemsXl" }} style={{ margin: "16px" }}>
                 <FlexItem>
                   <PfCard
                     value={`${processDashboardState.activeProcesses || 0}`}
@@ -174,17 +169,13 @@ export function ProcessDashboardComponent(props: Props) {
                   />
                 </FlexItem>
               </Flex>
-            </FlexItem>
+            </PageSection>
 
-            <FlexItem>
-              {" "}
+            <PageSection>
               <TextContent>
                 <Text component={"h2"}>Charts</Text>
               </TextContent>
-            </FlexItem>
-
-            <FlexItem>
-              <Flex spaceItems={{ default: "spaceItems2xl" }}>
+              <Flex spaceItems={{ default: "spaceItems2xl" }} style={{ margin: "16px" }}>
                 <FlexItem>
                   <VictoryChartCard
                     type="pie"
@@ -244,12 +235,12 @@ export function ProcessDashboardComponent(props: Props) {
                   />
                 </FlexItem>
               </Flex>
-            </FlexItem>
+            </PageSection>
           </>
         ) : (
           <Alert title={"No Data"}>{"No data has been supplied to build the process dashboard."}</Alert>
         )}
-      </Flex>
+      </Page>
     </>
   );
 }

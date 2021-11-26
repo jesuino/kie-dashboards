@@ -24,26 +24,33 @@ export interface TabData {
 
 export interface TabNavigationProps {
   tabs: TabData[];
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
 }
 
 export const TabNavigation = (props: TabNavigationProps) => {
-  const [activeTabKey, setActiveTabKey] = useState(0);  
+  const [activeTabKey, setActiveTabKey] = useState(0);
   const handleTabClick = (event: any, tabIndex: number) => setActiveTabKey(tabIndex);
 
   return (
     <>
-      <Tabs activeKey={activeTabKey} onSelect={handleTabClick} style={{ width: props.width }}>
-        {props.tabs.map((td, i) => (
-          <Tab key={i} eventKey={i} title={<TabTitleText>{td.title}</TabTitleText>} style={{ overflow: "none", paddingTop: "20px" }}>
-            <iframe
-              src={td.target}
-              style={{ border: "none", width: props.width, height: props.height, overflow: "none" }}
-            ></iframe>
-          </Tab>
-        ))}
-      </Tabs>
+      {props.tabs.length > 0 && (
+        <Tabs activeKey={activeTabKey} onSelect={handleTabClick} style={{ width: props.width }}>
+          {props.tabs.map((td, i) => (
+            <Tab
+              key={i}
+              eventKey={i}
+              title={<TabTitleText>{td.title}</TabTitleText>}
+              style={{ overflow: "none", paddingTop: "20px" }}
+            >
+              <iframe
+                src={td.target}
+                style={{ border: "none", width: props.width, height: props.height, overflow: "none" }}
+              ></iframe>
+            </Tab>
+          ))}
+        </Tabs>
+      )}
     </>
   );
 };

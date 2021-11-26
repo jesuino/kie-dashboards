@@ -17,7 +17,7 @@
 import * as React from "react";
 import { ColumnType, ComponentController, DataSet } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
-import { Flex, FlexItem, TextContent, Text, Alert } from "@patternfly/react-core";
+import { Flex, FlexItem, TextContent, Text, Alert, Page, PageSection, Divider } from "@patternfly/react-core";
 import { PfCard } from "@kie-dashboards/card-base";
 import {
   Sla,
@@ -151,19 +151,11 @@ export function ProcessListComponent(props: Props) {
 
   return (
     <>
-      <Flex
-        style={{
-          backgroundColor: processListState.backgroundColor,
-          paddingLeft: "10px",
-          paddingTop: "10px",
-          height: "100%",
-        }}
-        direction={{ default: "column" }}
-      >
+      <Page >
         {processListState.tableData.length > 0 ? (
           <>
-            <FlexItem>
-              <Flex spaceItems={{ default: "spaceItemsXl" }} grow={{ default: "grow" }}>
+            <PageSection padding={{ default: "noPadding" }} variant={"light"}>
+              <Flex spaceItems={{ default: "spaceItemsXl" }} style={{ margin: "16px" }} justifyContent={{default: "justifyContentSpaceBetween"}}>
                 <FlexItem>
                   <PfCard
                     value={`${processListState.totalActive}`}
@@ -205,15 +197,16 @@ export function ProcessListComponent(props: Props) {
                   />
                 </FlexItem>
               </Flex>
-            </FlexItem>
-            <FlexItem style={{ width: "1300px", height: "800px", overflow: "auto" }}>
+            </PageSection>
+            <Divider />
+            <PageSection hasOverflowScroll={true}>
               <FilteredTable rows={processListState.tableData} columns={processListState.columns} alerts={ALERTS} />
-            </FlexItem>
+            </PageSection>
           </>
         ) : (
           <Alert title={"No Data"}>{"No data has been supplied to build the process list."}</Alert>
         )}
-      </Flex>
+      </Page>
     </>
   );
 }

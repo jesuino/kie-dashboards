@@ -15,7 +15,7 @@
  */
 
 import * as React from "react";
-import { ComponentController, DataSet, FilterRequest } from "@dashbuilder-js/component-api";
+import { ComponentController, DataSet } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
 
 import { TabNavigation, TabData, TabNavigationProps } from "@kie-dashboards/tab-navigation-base";
@@ -29,9 +29,7 @@ const DEFAULT_WIDTH = "1200px";
 const DEFAULT_HEIGHT = "900px";
 export function TabNavigationComponent(props: Props) {
   const [tabNavigationProps, setTabNavigationProps] = useState<TabNavigationProps>({
-    tabs: [],
-    width: DEFAULT_WIDTH,
-    height: DEFAULT_HEIGHT
+    tabs: []    
   });
   console.log(window.parent.location.href);
   useEffect(() => {
@@ -63,8 +61,8 @@ export function TabNavigationComponent(props: Props) {
       }
       setTabNavigationProps({
         tabs: tabs,
-        width: width || DEFAULT_WIDTH,
-        height: height || DEFAULT_HEIGHT
+        width: width,
+        height: height
       });
     });
 

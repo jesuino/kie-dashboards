@@ -4,6 +4,7 @@
   "style": "FLUID",
   "layoutProperties": {
     "background-color": "#EFEFEF",
+    "padding-top": "20px",
     "width": "20000px"
   },
   "rows": [

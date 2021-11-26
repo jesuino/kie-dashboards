@@ -17,7 +17,7 @@
 import * as React from "react";
 import { Column, ColumnType, ComponentController, DataSet } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
-import { Flex, FlexItem, Alert } from "@patternfly/react-core";
+import { Flex, FlexItem, Alert, Page, PageSection } from "@patternfly/react-core";
 import { PfCard } from "@kie-dashboards/card-base";
 import {
   TaskStatus,
@@ -165,135 +165,126 @@ export function TaskListComponent(props: Props) {
 
   return (
     <>
-      <Flex
-        style={{
-          backgroundColor: taskListState.backgroundColor,
-          paddingLeft: "10px",
-          paddingTop: "10px",
-          height: "100%"
-        }}
-        grow={{ default: "grow" }}
-        direction={{ default: "column" }}
-      >
-        {taskListState.tableData.length > 0 ? (
-          <>
-            <FlexItem>
-              <Flex grow={{ default: "grow" }}>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalCreated}`}
-                    color="blue"
-                    title="Created"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalReady}`}
-                    color="blue"
-                    title="Ready"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalReserved}`}
-                    color="blue"
-                    title="Reserved"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
+      <Page>
+       
+          {taskListState.tableData.length > 0 ? (
+            <>
+            <PageSection padding={{ default: "noPadding" }} variant={"light"}>
+                <Flex style={{ margin: "16px" }} justifyContent={{default: "justifyContentSpaceBetween"}}>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalCreated}`}
+                      color="blue"
+                      title="Created"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalReady}`}
+                      color="blue"
+                      title="Ready"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalReserved}`}
+                      color="blue"
+                      title="Reserved"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
 
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalInProgress}`}
-                    color="blue"
-                    title="In Progress"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalCompleted}`}
-                    color="green"
-                    title="Completed"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-              </Flex>
-            </FlexItem>
-            <FlexItem>
-              <Flex>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalSuspended}`}
-                    color="orange"
-                    title="Suspended"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalExited}`}
-                    color="orange"
-                    title="Exited"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalObsolete}`}
-                    color="orange"
-                    title="Obsolete"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalFailed}`}
-                    color="red"
-                    title="Failed"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-                <FlexItem>
-                  <PfCard
-                    value={`${taskListState.totalError}`}
-                    color="red"
-                    title="Error"
-                    subtitle=""
-                    width={250}
-                    valueFontSize={CARDS_FONT_SIZE}
-                  />
-                </FlexItem>
-              </Flex>
-            </FlexItem>
-            <FlexItem style={{ width: "1310px",  height: "600px", overflow: "auto" }}>
-              <FilteredTable rows={taskListState.tableData} columns={taskListState.columns} alerts={ALERTS} />
-            </FlexItem>
-          </>
-        ) : (
-          <Alert title={"No Data"}>{"No data has been supplied to build the process list."}</Alert>
-        )}
-      </Flex>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalInProgress}`}
+                      color="blue"
+                      title="In Progress"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalCompleted}`}
+                      color="green"
+                      title="Completed"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                </Flex>
+
+                <Flex style={{ margin: "16px" }} justifyContent={{default: "justifyContentSpaceBetween"}}>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalSuspended}`}
+                      color="orange"
+                      title="Suspended"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalExited}`}
+                      color="orange"
+                      title="Exited"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalObsolete}`}
+                      color="orange"
+                      title="Obsolete"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalFailed}`}
+                      color="red"
+                      title="Failed"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                  <FlexItem>
+                    <PfCard
+                      value={`${taskListState.totalError}`}
+                      color="red"
+                      title="Error"
+                      subtitle=""
+                      width={250}
+                      valueFontSize={CARDS_FONT_SIZE}
+                    />
+                  </FlexItem>
+                </Flex>
+              </PageSection>
+              <PageSection hasOverflowScroll={true} variant={"light"}>
+                <FilteredTable rows={taskListState.tableData} columns={taskListState.columns} alerts={ALERTS} />
+              </PageSection>
+            </>
+          ) : (
+            <Alert title={"No Data"}>{"No data has been supplied to build the process list."}</Alert>
+          )}
+      </Page>
     </>
   );
 }
