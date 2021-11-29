@@ -19,17 +19,10 @@ import { ColumnType, ComponentController, DataSet } from "@dashbuilder-js/compon
 import { useState, useEffect } from "react";
 import { PfCard } from "@kie-dashboards/card-base";
 import { Alert, Flex, FlexItem, Page, PageSection, Text, TextContent } from "@patternfly/react-core";
-import { VictoryChart, VictoryChartCard } from "@kie-dashboards/victory-chart-base";
+import { VictoryChartCard } from "@kie-dashboards/victory-chart-base";
 import { byStatus, byUser, byStartDay, toProcessInstanceSummary } from "./DataSetMappers";
 import { ProcessInstanceSummary } from "./ProcessInstanceSummary";
-import {
-  SLA_VIOLATED,
-  STATUS_ACTIVE,
-  STATUS_COMPLETED,
-  STATUS_ABORTED,
-  Sla,
-  ProcessStatus
-} from "@kie-dashboards/process-model";
+import { SLA_VIOLATED, STATUS_ACTIVE, STATUS_COMPLETED, STATUS_ABORTED } from "@kie-dashboards/process-model";
 
 const DEFAULT_BG_COLOR = "#EEEEEE";
 

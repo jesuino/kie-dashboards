@@ -3,7 +3,7 @@
   "name": "index",
   "style": "FLUID",
   "layoutProperties": {
-    "background-color": "#EFEFEF"
+    "background-color": "#FFFFFF"
   },
   "rows": [
     {

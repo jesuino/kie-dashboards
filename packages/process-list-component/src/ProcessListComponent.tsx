@@ -17,7 +17,7 @@
 import * as React from "react";
 import { ColumnType, ComponentController, DataSet } from "@dashbuilder-js/component-api";
 import { useState, useEffect } from "react";
-import { Flex, FlexItem, TextContent, Text, Alert, Page, PageSection, Divider } from "@patternfly/react-core";
+import { Flex, FlexItem, Alert, Page, PageSection, Divider } from "@patternfly/react-core";
 import { PfCard } from "@kie-dashboards/card-base";
 import {
   Sla,
@@ -29,10 +29,16 @@ import {
   STATUS_ACTIVE,
   STATUS_COMPLETED,
   SLA_MET,
-  SLA_PENDING
+  SLA_PENDING,
+  STATUS_SUSPENDED,
+  STATUS_PENDING,
+  SLA_NA,
+  SLA_ABORTED
 } from "@kie-dashboards/process-model";
 import { Alert as TableAlert, FilteredTable } from "@kie-dashboards/filtered-table-base";
 
+const CARDS_FONT_SIZE = "30px";
+const CARDS_WIDTH = 250;
 const DEFAULT_BG_COLOR = "#EEEEEE";
 
 interface Props {
@@ -49,10 +55,18 @@ interface ProcessListState {
   backgroundColor: string;
   tableData: string[][];
   columns: string[];
-  totalActive?: number;
-  totalCompleted?: number;
-  totalAborted?: number;
-  totalSlaOverdue?: number;
+
+  totalActive: number;
+  totalCompleted: number;
+  totalSuspended: number;
+  totalPending: number;
+  totalAborted: number;
+
+  slaViolated: number;
+  slaNA: number;
+  slaMet: number;
+  slaPending: number;
+  slaAborted: number;
 }
 
 const validate = (dataSet: DataSet): string | undefined => {
@@ -83,7 +97,15 @@ export function ProcessListComponent(props: Props) {
     totalActive: 0,
     totalCompleted: 0,
     totalAborted: 0,
-    totalSlaOverdue: 0,
+    totalSuspended: 0,
+    totalPending: 0,
+
+    slaViolated: 0,
+    slaNA: 0,
+    slaMet: 0,
+    slaPending: 0,
+    slaAborted: 0,
+
     tableData: []
   });
 
@@ -143,7 +165,15 @@ export function ProcessListComponent(props: Props) {
           totalAborted: statusCount.get(STATUS_ABORTED) || 0,
           totalActive: statusCount.get(STATUS_ACTIVE) || 0,
           totalCompleted: statusCount.get(STATUS_COMPLETED) || 0,
-          totalSlaOverdue: slaCount.get(SLA_VIOLATED) || 0
+          totalSuspended: statusCount.get(STATUS_SUSPENDED) || 0,
+          totalPending: statusCount.get(STATUS_PENDING) || 0,
+
+          slaViolated: slaCount.get(SLA_VIOLATED) || 0,
+          slaNA: slaCount.get(SLA_NA) || 0,
+          slaMet: slaCount.get(SLA_MET) || 0,
+          slaPending: slaCount.get(SLA_PENDING) || 0,
+          slaAborted: slaCount.get(SLA_ABORTED) || 0
+
         };
       });
     });
@@ -151,19 +181,19 @@ export function ProcessListComponent(props: Props) {
 
   return (
     <>
-      <Page >
+      <Page>
         {processListState.tableData.length > 0 ? (
           <>
             <PageSection padding={{ default: "noPadding" }} variant={"light"}>
-              <Flex spaceItems={{ default: "spaceItemsXl" }} style={{ margin: "16px" }} justifyContent={{default: "justifyContentSpaceBetween"}}>
+              <Flex style={{ margin: "16px" }} justifyContent={{ default: "justifyContentSpaceBetween" }}>
                 <FlexItem>
                   <PfCard
                     value={`${processListState.totalActive}`}
                     color="blue"
                     title="Active"
                     subtitle=""
-                    width={300}
-                    valueFontSize={"45px"}
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
                   />
                 </FlexItem>
                 <FlexItem>
@@ -172,34 +202,98 @@ export function ProcessListComponent(props: Props) {
                     color="green"
                     title="Completed"
                     subtitle=""
-                    width={300}
-                    valueFontSize={"45px"}
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
+                  />
+                </FlexItem>
+                <FlexItem>
+                  <PfCard
+                    value={`${processListState.totalSuspended}`}
+                    color="orange"
+                    title="Suspended"
+                    subtitle=""
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
+                  />
+                </FlexItem>
+                <FlexItem>
+                  <PfCard
+                    value={`${processListState.totalPending}`}
+                    color="orange"
+                    title="Pending"
+                    subtitle=""
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
                   />
                 </FlexItem>
                 <FlexItem>
                   <PfCard
                     value={`${processListState.totalAborted}`}
-                    color="orange"
+                    color="red"
                     title="Aborted"
                     subtitle=""
-                    width={300}
-                    valueFontSize={"45px"}
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
+                  />
+                </FlexItem>
+              </Flex>
+
+              <Flex style={{ margin: "16px" }} justifyContent={{ default: "justifyContentSpaceBetween" }}>
+                <FlexItem>
+                  <PfCard
+                    value={`${processListState.slaNA}`}
+                    color="blue"
+                    title="SLA N/A"
+                    subtitle=""
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
+                  />
+                </FlexItem>
+
+                <FlexItem>
+                  <PfCard
+                    value={`${processListState.slaMet}`}
+                    color="green"
+                    title="SLA Met"
+                    subtitle=""
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
                   />
                 </FlexItem>
                 <FlexItem>
                   <PfCard
-                    value={`${processListState.totalSlaOverdue}`}
+                    value={`${processListState.slaPending}`}
+                    color="orange"
+                    title="SLA Pending"
+                    subtitle=""
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
+                  />
+                </FlexItem>
+                <FlexItem>
+                  <PfCard
+                    value={`${processListState.slaAborted}`}
+                    color="orange"
+                    title="SLA Aborted"
+                    subtitle=""
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
+                  />
+                </FlexItem>
+                <FlexItem>
+                  <PfCard
+                    value={`${processListState.slaViolated}`}
                     color="red"
                     title="SLA Violated"
                     subtitle=""
-                    width={300}
-                    valueFontSize={"45px"}
+                    width={CARDS_WIDTH}
+                    valueFontSize={CARDS_FONT_SIZE}
                   />
                 </FlexItem>
               </Flex>
             </PageSection>
             <Divider />
-            <PageSection hasOverflowScroll={true}>
+            <PageSection hasOverflowScroll={true} variant={"light"}>
               <FilteredTable rows={processListState.tableData} columns={processListState.columns} alerts={ALERTS} />
             </PageSection>
           </>
