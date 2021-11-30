@@ -120,7 +120,7 @@ export function ProcessDashboardComponent(props: Props) {
               <TextContent>
                 <Text component={"h2"}>Summary</Text>
               </TextContent>
-              <Flex spaceItems={{ default: "spaceItemsXl" }} style={{ margin: "16px" }}>
+              <Flex style={{ margin: "16px" }} justifyContent={{ default: "justifyContentSpaceBetween" }}>
                 <FlexItem>
                   <PfCard
                     value={`${processDashboardState.activeProcesses || 0}`}
@@ -168,7 +168,7 @@ export function ProcessDashboardComponent(props: Props) {
               <TextContent>
                 <Text component={"h2"}>Charts</Text>
               </TextContent>
-              <Flex spaceItems={{ default: "spaceItems2xl" }} style={{ margin: "16px" }}>
+              <Flex style={{ margin: "16px" }} justifyContent={{ default: "justifyContentSpaceBetween" }}>
                 <FlexItem>
                   <VictoryChartCard
                     type="pie"
@@ -176,8 +176,8 @@ export function ProcessDashboardComponent(props: Props) {
                     backgroundColor="white"
                     onValidationSuccess={() => {}}
                     onValidationError={(message: string) => {}}
-                    width={400}
-                    height={250}
+                    width={500}
+                    height={300}
                     themeColor="multi"
                     themeVariant="light"
                     staticTitle={true}
@@ -193,8 +193,8 @@ export function ProcessDashboardComponent(props: Props) {
                     backgroundColor="white"
                     onValidationSuccess={() => {}}
                     onValidationError={(message: string) => {}}
-                    width={400}
-                    height={250}
+                    width={500}
+                    height={300}
                     themeColor="multi"
                     themeVariant="light"
                     dataSet={processDashboardState.processesByStartDate}
@@ -214,8 +214,8 @@ export function ProcessDashboardComponent(props: Props) {
                     backgroundColor="white"
                     onValidationSuccess={() => {}}
                     onValidationError={(message: string) => {}}
-                    width={400}
-                    height={250}
+                    width={500}
+                    height={300}
                     themeColor="multi"
                     themeVariant="light"
                     dataSet={processDashboardState.processesByUser}
