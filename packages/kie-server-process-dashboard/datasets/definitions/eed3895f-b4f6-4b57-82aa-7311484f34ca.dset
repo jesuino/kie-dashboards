@@ -1,0 +1,47 @@
+{
+  "uuid": "eed3895f-b4f6-4b57-82aa-7311484f34ca",
+  "name": "process dashboard dataset - external",
+  "provider": "External",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dynamic": false,
+  "url": "https://raw.githubusercontent.com/jesuino/dashbuilder-data/master/process_dashboard/process_dashboard.json",
+  "columns": [
+    {
+      "id": "PROCESSNAME",
+      "type": "label"
+    },
+    {
+      "id": "PROCESSINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "PROCESSTYPE",
+      "type": "number"
+    },
+    {
+      "id": "STATUS",
+      "type": "number"
+    },
+    {
+      "id": "SLACOMPLIANCE",
+      "type": "number"
+    },
+    {
+      "id": "START_DATE",
+      "type": "date"
+    },
+    {
+      "id": "END_DATE",
+      "type": "date"
+    },
+    {
+      "id": "USER_IDENTITY",
+      "type": "label"
+    }
+  ]
+}

@@ -25,6 +25,8 @@ import { ProcessInstanceSummary } from "./ProcessInstanceSummary";
 import { SLA_VIOLATED, STATUS_ACTIVE, STATUS_COMPLETED, STATUS_ABORTED } from "@kie-dashboards/process-model";
 
 const DEFAULT_BG_COLOR = "#EEEEEE";
+const CHART_WIDTH = 400;
+const CHART_HEIGHT = 300;
 
 interface Props {
   controller: ComponentController;
@@ -128,7 +130,7 @@ export function ProcessDashboardComponent(props: Props) {
                     title="Active"
                     subtitle="Process Instances"
                     width={300}
-                    valueFontSize={"45px"}
+                    valueFontSize={"40px"}
                   />
                 </FlexItem>
                 <FlexItem>
@@ -138,7 +140,7 @@ export function ProcessDashboardComponent(props: Props) {
                     title="Completed"
                     subtitle="Process Instances"
                     width={300}
-                    valueFontSize={"45px"}
+                    valueFontSize={"40px"}
                   />
                 </FlexItem>
                 <FlexItem>
@@ -148,7 +150,7 @@ export function ProcessDashboardComponent(props: Props) {
                     title="Aborted"
                     subtitle="Process Instances"
                     width={300}
-                    valueFontSize={"45px"}
+                    valueFontSize={"40px"}
                   />
                 </FlexItem>
                 <FlexItem>
@@ -158,7 +160,7 @@ export function ProcessDashboardComponent(props: Props) {
                     title="SLA Overdue"
                     subtitle="Process Instances"
                     width={300}
-                    valueFontSize={"45px"}
+                    valueFontSize={"40px"}
                   />
                 </FlexItem>
               </Flex>
@@ -176,8 +178,8 @@ export function ProcessDashboardComponent(props: Props) {
                     backgroundColor="white"
                     onValidationSuccess={() => {}}
                     onValidationError={(message: string) => {}}
-                    width={500}
-                    height={300}
+                    width={CHART_WIDTH}
+                    height={CHART_HEIGHT}
                     themeColor="multi"
                     themeVariant="light"
                     staticTitle={true}
@@ -193,14 +195,14 @@ export function ProcessDashboardComponent(props: Props) {
                     backgroundColor="white"
                     onValidationSuccess={() => {}}
                     onValidationError={(message: string) => {}}
-                    width={500}
-                    height={300}
+                    width={CHART_WIDTH}
+                    height={CHART_HEIGHT}
                     themeColor="multi"
                     themeVariant="light"
                     dataSet={processDashboardState.processesByStartDate}
                     staticTitle={true}
                     paddingTop={10}
-                    paddingRight={10}
+                    paddingRight={50}
                     paddingLeft={50}
                     paddingBottom={40}
                     gridY={true}
@@ -214,8 +216,8 @@ export function ProcessDashboardComponent(props: Props) {
                     backgroundColor="white"
                     onValidationSuccess={() => {}}
                     onValidationError={(message: string) => {}}
-                    width={500}
-                    height={300}
+                    width={CHART_WIDTH}
+                    height={CHART_HEIGHT}
                     themeColor="multi"
                     themeVariant="light"
                     dataSet={processDashboardState.processesByUser}
