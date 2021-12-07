@@ -72,18 +72,17 @@ interface ProcessListState {
 const validate = (dataSet: DataSet): string | undefined => {
   const columns = dataSet.columns;
   if (
-    columns.length < 7 ||
+    columns.length < 6 ||
     columns[0].type !== ColumnType.NUMBER ||
     (columns[1].type !== ColumnType.LABEL && columns[1].type !== ColumnType.TEXT) ||
     columns[2].type !== ColumnType.NUMBER ||
     columns[3].type !== ColumnType.DATE ||
-    columns[4].type !== ColumnType.DATE ||
-    columns[5].type !== ColumnType.NUMBER ||
-    (columns[6].type !== ColumnType.LABEL && columns[6].type !== ColumnType.TEXT)
+    columns[4].type !== ColumnType.NUMBER ||
+    (columns[5].type !== ColumnType.LABEL && columns[5].type !== ColumnType.TEXT)
   ) {
     return `
-    Invalid dataset. Expected 7 columns with the types NUMBER, LABEL/TEXT, NUMBER, DATE, DATE, NUMBER and LABEL/TEXT. 
-    These columns should be process instance id, process name, status, start date, end date, sla compliance and user identity.
+    Invalid dataset. Expected 6 columns with the types NUMBER, LABEL/TEXT, NUMBER, DATE, NUMBER and LABEL/TEXT. 
+    These columns should be process instance id, process name, status, start date, sla compliance and user identity.
     `;
   }
 
@@ -93,7 +92,7 @@ const validate = (dataSet: DataSet): string | undefined => {
 export function ProcessListComponent(props: Props) {
   const [processListState, setProcessListState] = useState<ProcessListState>({
     backgroundColor: DEFAULT_BG_COLOR,
-    columns: ["Instance Id", "Process Name", "Status", "Start Date", "End Date", "SLA", "Initiated by"],
+    columns: ["Instance Id", "Process Name", "Status", "Start Date", "SLA", "Initiated by"],
     totalActive: 0,
     totalCompleted: 0,
     totalAborted: 0,
@@ -135,7 +134,7 @@ export function ProcessListComponent(props: Props) {
       const slaCount = new Map<Sla, number>();
       _dataset.data.forEach(line => {
         const status = PROCESS_STATUSES.find(s => s.code === +line[2]);
-        const sla = ALL_SLAS.find(s => s.code === +line[5]);
+        const sla = ALL_SLAS.find(s => s.code === +line[4]);
 
         if (status) {
           const totalStatus = statusCount.get(status) || 0;
@@ -152,9 +151,8 @@ export function ProcessListComponent(props: Props) {
           line[1] || "",
           status ? status.name : "Unknown",
           line[3] || "",
-          line[4] || "",
           sla ? sla.name : "Unknown",
-          line[6] || ""
+          line[5] || ""
         ]);
       });
 
