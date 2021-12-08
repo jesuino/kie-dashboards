@@ -58,19 +58,18 @@ const isText = (column: Column) => {
 const validate = (dataSet: DataSet): string | undefined => {
   const columns = dataSet.columns;
   if (
-    columns.length < 8 ||
+    columns.length < 7 ||
     !isText(columns[0]) || // processId
     columns[1].type !== ColumnType.NUMBER || // processInstanceId
     !isText(columns[2]) || // name
     columns[3].type !== ColumnType.NUMBER || // taskId
-    columns[4].type !== ColumnType.DATE || // createdOn
-    columns[5].type !== ColumnType.DATE || // lastModificationDate
-    !isText(columns[6]) || // actualOwner
-    !isText(columns[7]) // status
+    columns[4].type !== ColumnType.DATE || // createdOn    
+    !isText(columns[5]) || // actualOwner
+    !isText(columns[6]) // status
   ) {
     return `
-    Invalid dataset. Expected 8 columns with the types LABEL/TEXT, NUMBER, LABEL/TEXT, NUMBER, DATE, DATE, LABEL/TEXT, LABEL/TEXT. 
-    These columns should be process id, process instance id, name, taskId, createdOn, lastModificationDate, actualOwner and status.
+    Invalid dataset. Expected 7 columns with the types LABEL/TEXT, NUMBER, LABEL/TEXT, NUMBER, DATE, LABEL/TEXT, LABEL/TEXT. 
+    These columns should be process id, process instance id, name, taskId, createdOn, actualOwner and status.
     `;
   }
 
@@ -86,7 +85,6 @@ export function TaskListComponent(props: Props) {
       "Name",
       "Task ID",
       "Created On",
-      "Last Modification",
       "Actual Owner",
       "Status"
     ],
@@ -127,15 +125,15 @@ export function TaskListComponent(props: Props) {
       // process instance id, process name, status, start date, end date, sla compliance and user identity.
       const statusCount = new Map<TaskStatus, number>();
       _dataset.data.forEach(line => {
-        const status = line[7] as TaskStatus;
+        const status = line[6] as TaskStatus;
 
         if (status) {
           const totalStatus = statusCount.get(status) || 0;
           statusCount.set(status, totalStatus + 1);
         }
 
-        // process id, process instance id, name, taskId, createdOn, lastModificationDate, actualOwner and status.
-        tableData.push([line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7]]);
+        // process id, process instance id, name, taskId, createdOn, actualOwner and status.
+        tableData.push([line[0], line[1], line[2], line[3], line[4], line[5], status]);
       });
 
       setTaskListState(s => {

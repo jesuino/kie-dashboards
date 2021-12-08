@@ -1,0 +1,71 @@
+{
+  "uuid": "6e556387-3d7c-4d67-a78c-3e9cc7896d4e",
+  "name": "Tasks - External",
+  "provider": "External",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dynamic": false,
+  "url": "http://localhost:8380/tasks",
+  "columns": [
+    {
+      "id": "ID",
+      "type": "number"
+    },
+    {
+      "id": "NAME",
+      "type": "label"
+    },
+    {
+      "id": "SUBJECT",
+      "type": "label"
+    },
+    {
+      "id": "DESCRIPTION",
+      "type": "text"
+    },
+    {
+      "id": "PRIORITY",
+      "type": "number"
+    },
+    {
+      "id": "IS_SKIPABLE",
+      "type": "label"
+    },
+    {
+      "id": "ACTUAL_OWNER",
+      "type": "label"
+    },
+    {
+      "id": "CREATED_BY",
+      "type": "label"
+    },
+    {
+      "id": "CREATED_ON",
+      "type": "date"
+    },
+    {
+      "id": "PROCESSINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "PROCESSID",
+      "type": "label"
+    },
+    {
+      "id": "CONTAINER",
+      "type": "label"
+    },
+    {
+      "id": "STATUS",
+      "type": "label"
+    },
+    {
+      "id": "CORRELATION_KEY",
+      "type": "label"
+    }
+  ]
+}

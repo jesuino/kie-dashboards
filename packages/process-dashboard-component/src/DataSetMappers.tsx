@@ -133,11 +133,10 @@ export const toProcessInstanceSummary = (dataSet: DataSet): ProcessInstanceSumma
   dataSet.data.forEach(line => {
     list.push({
       processInstanceId: +line[0],
-      type: +line[1],
-      status: PROCESS_STATUSES.filter(s => s.code === +line[2])[0],
-      slaCompliance: ALL_SLAS.filter(s => s.code == +line[3])[0],
-      startDate: line[4] || "",
-      userIdentity: line[5]
+      status: PROCESS_STATUSES.filter(s => s.code === +line[1])[0],
+      slaCompliance: ALL_SLAS.filter(s => s.code == +line[2])[0],
+      startDate: line[3] || "",
+      userIdentity: line[4]
     });
   });
   return list;

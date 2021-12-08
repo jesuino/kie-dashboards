@@ -54,17 +54,16 @@ interface ProcessDashboardState {
 const validate = (dataSet: DataSet): string | undefined => {
   const columns = dataSet.columns;
   if (
-    columns.length < 6 ||
+    columns.length < 5 ||
     columns[0].type !== ColumnType.NUMBER ||
     columns[1].type !== ColumnType.NUMBER ||
     columns[2].type !== ColumnType.NUMBER ||
-    columns[3].type !== ColumnType.NUMBER ||
-    columns[4].type !== ColumnType.DATE ||
-    columns[5].type !== ColumnType.LABEL
+    columns[3].type !== ColumnType.DATE ||
+    columns[4].type !== ColumnType.LABEL
   ) {
     return `
-    Invalid dataset. Expected 6 columns with the types NUMBER, NUMBER, NUMBER, DATE and LABEL. 
-    These columns should be process instance id, type, status, sla compliance, start date and user identity.
+    Invalid dataset. Expected 5 columns with the types NUMBER, NUMBER, DATE and LABEL. 
+    These columns should be process instance id, status, sla compliance, start date and user identity.
     `;
   }
 

@@ -1,0 +1,63 @@
+{
+  "uuid": "7c0c6c29-55c0-4808-bdac-c52b55649a32",
+  "name": "Process Instances - External",
+  "provider": "External",
+  "isPublic": true,
+  "cacheEnabled": false,
+  "cacheMaxRows": 1000,
+  "pushEnabled": false,
+  "pushMaxSize": 1024,
+  "refreshAlways": false,
+  "dynamic": false,
+  "url": "http://localhost:8380/processes",
+  "columns": [
+    {
+      "id": "PROCESSINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "PROCESSID",
+      "type": "label"
+    },
+    {
+      "id": "PROCESSNAME",
+      "type": "label"
+    },
+    {
+      "id": "PROCESSVERSION",
+      "type": "label"
+    },
+    {
+      "id": "STATUS",
+      "type": "number"
+    },
+    {
+      "id": "CONTAINER",
+      "type": "label"
+    },
+    {
+      "id": "USER_IDENTITY",
+      "type": "label"
+    },
+    {
+      "id": "START_DATE",
+      "type": "date"
+    },
+    {
+      "id": "DESCRIPTION",
+      "type": "text"
+    },
+    {
+      "id": "CORRELATIONKEY",
+      "type": "label"
+    },
+    {
+      "id": "PARENTINSTANCEID",
+      "type": "number"
+    },
+    {
+      "id": "SLACOMPLIANCE",
+      "type": "number"
+    }
+  ]
+}
