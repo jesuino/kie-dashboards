@@ -13,6 +13,20 @@
           "name": "Process Dashboard",
           "modifiable": true,
           "context": "resourceId=Process Dashboard;resourceType=PERSPECTIVE;"
+        },
+        {
+          "id": "perspective_1638986788821",
+          "type": "ITEM",
+          "name": "Process List",
+          "modifiable": true,
+          "context": "resourceId=Process List;resourceType=PERSPECTIVE;"
+        },
+        {
+          "id": "perspective_1638986797696",
+          "type": "ITEM",
+          "name": "Task List",
+          "modifiable": true,
+          "context": "resourceId=Task List;resourceType=PERSPECTIVE;"
         }
       ]
     }

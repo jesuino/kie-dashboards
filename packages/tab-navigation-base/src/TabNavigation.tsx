@@ -31,7 +31,6 @@ export interface TabNavigationProps {
 export const TabNavigation = (props: TabNavigationProps) => {
   const [activeTabKey, setActiveTabKey] = useState(0);
   const handleTabClick = (event: any, tabIndex: number) => setActiveTabKey(tabIndex);
-
   return (
     <>
       {props.tabs.length > 0 && (
@@ -44,6 +43,7 @@ export const TabNavigation = (props: TabNavigationProps) => {
               style={{ overflow: "none", paddingTop: "20px" }}
             >
               <iframe
+                loading="lazy"
                 src={td.target}
                 style={{ border: "none", width: props.width, height: props.height, overflow: "none" }}
               ></iframe>
