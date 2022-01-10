@@ -32,7 +32,7 @@ interface Props {
 
 const ALERTS = new Map<number, TableAlert>();
 // Status Alert
-ALERTS.set(7, { danger: TaskStatus.Exited, good: TaskStatus.InProgress, great: STATUS_COMPLETED.name });
+ALERTS.set(6, { danger: TaskStatus.Exited, good: TaskStatus.InProgress, great: STATUS_COMPLETED.name });
 
 interface TaskListState {
   backgroundColor: string;
