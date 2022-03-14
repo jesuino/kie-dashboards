@@ -1,34 +1,12 @@
 {
   "init": [
     {
-      "key": "color",
-      "value": "blue"
+      "key": "schema",
+      "value": "{\"title\":\"Guest\",\"type\":\"object\",\"properties\":{\"firstName\":{\"type\":\"string\"},\"lastName\":{\"type\":\"string\"},\"workExperience\":{\"description\":\"Work experience in years\",\"type\":\"integer\",\"minimum\":0,\"maximum\":100}},\"required\":[\"firstName\",\"lastName\"]}"
     },
     {
-      "key": "title",
-      "value": "Hello!"
-    },
-    {
-      "key": "subtitle",
-      "value": "Hello World!"
+      "key": "url",
+      "value": "test"
     }
-  ],
-  "dataSet": {
-    "columns": [
-      {
-        "name": "Total",
-        "type": "LABEL",
-        "settings": {
-          "columnId": "Total",
-          "columnName": "Total",
-          "valueExpression": "value",
-          "emptyTemplate": "---",
-          "valuePattern": null
-        }
-      }
-    ],
-    "data": [
-      ["1200"]
-    ]
-  }
+  ]
 }

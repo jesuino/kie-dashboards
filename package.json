@@ -48,6 +48,7 @@
     "@types/react-router": "^5.1.1",
     "@types/react-router-dom": "^5.1.1",
     "@types/testing-library__dom": "^7.5.0",
+    "@types/heatmap.js": "^2.0.36",
     "babel-loader": "^8.0.6",
     "circular-dependency-plugin": "^5.2.0",
     "clean-webpack-plugin": "^0.1.19",
@@ -78,6 +79,7 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^5.0.9",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",    
+    "heatmap.js": "2.0.5"
   }
 }

@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 import { JSONSchemaBridge } from "uniforms-bridge-json-schema";
-import { AutoForm } from "uniforms-patternfly";
+import { AutoForm } from "uniforms-patternfly/dist/es6";
 import * as Ajv from "ajv";
 import * as React from "react";
+import { useCallback } from "react";
 
 const ajv = new Ajv({ allErrors: true, useDefaults: true });
 const createValidator = (schema: any) => {
@@ -29,13 +30,22 @@ const createValidator = (schema: any) => {
 
 interface Props {
   schema: Object;
+  onSubmit: (formRef: any, data: Object) => void;
+  disabled?: boolean;
 }
 
 export const Uniforms = (props: Props) => {
   const bridge = new JSONSchemaBridge(props.schema, createValidator(props.schema));
+  let formRef: any;
+  const onSubmitWrapper = useCallback(data => props.onSubmit(formRef, data), [props.onSubmit]);
   return (
     <>
-      <AutoForm schema={bridge} onSubmit={console.log} />
+      <AutoForm
+        schema={bridge}
+        onSubmit={onSubmitWrapper}
+        disabled={props.disabled}
+        ref={(ref: any) => (formRef = ref)}
+      />
     </>
   );
 };

@@ -16,14 +16,12 @@
 import {
   Card,
   CardBody,
-  CardTitle,
   Flex,
   FlexItem,
   TextVariants,
   Text,
   Divider,
   TextContent,
-  Bullseye
 } from "@patternfly/react-core";
 import * as React from "react";
 
