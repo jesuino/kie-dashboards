@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import * as React from "react";
-import { TableComposable, Thead, Tbody, Tr, Th, Td } from "@patternfly/react-table";
+import { TableComposable, Thead, Tbody, Tr, Th, Td, selectable } from "@patternfly/react-table";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { Flex, FlexItem, Pagination, SearchInput } from "@patternfly/react-core";
@@ -37,6 +37,8 @@ export interface Alert {
 interface Props {
   columns: string[];
   rows: any[][];
+  onRowSelected?: (i: number) => void;
+  selectable?: boolean;
   alerts?: Map<number, Alert>;
 }
 
@@ -56,6 +58,8 @@ export const FilteredTable = (props: Props) => {
 
   // SEARCH
   const [search, setSearch] = useState("");
+
+  const [selectedRow, setSelectedRow] = useState<any[]>([]);
 
   const rows = useMemo(() => {
     let filteredRows: any[][] = [];
@@ -103,6 +107,18 @@ export const FilteredTable = (props: Props) => {
     [activeSortIndex, activeSortDirection]
   );
 
+  const isSelectedRow = useCallback(
+    (row: any[]) => {
+      return (
+        selectedRow &&
+        selectedRow.length > 0 &&
+        selectedRow.length === row.length &&
+        selectedRow.every((v, index) => v === row[index])
+      );
+    },
+    [selectedRow]
+  );
+
   const onSearch = useCallback(
     (_search: string) => {
       setSearch(_search);
@@ -135,9 +151,9 @@ export const FilteredTable = (props: Props) => {
         <FlexItem>
           {" "}
           <SearchInput
-            placeholder="Filter"            
+            placeholder="Filter"
             value={search}
-            onChange={(v:any) => onSearch(v as string)}
+            onChange={(v: any) => onSearch(v as string)}
             onClear={() => onSearch("")}
           />
         </FlexItem>
@@ -176,7 +192,29 @@ export const FilteredTable = (props: Props) => {
         </Thead>
         <Tbody>
           {rows?.slice((page - 1) * perPage, (page - 1) * perPage + perPage).map((row, rowIndex) => (
-            <Tr key={rowIndex}>
+            <Tr
+              key={rowIndex}
+              isHoverable={props.selectable}
+              onClick={() => {
+                if (props.selectable) {
+                  if (isSelectedRow(row)) {
+                    setSelectedRow([]);
+                    props.onRowSelected!(-1);
+                  } else {
+                    setSelectedRow(row);
+                    props.onRowSelected!(rowIndex);
+                  }
+                }
+              }}
+              selected={isSelectedRow(row)}
+              style={
+                isSelectedRow(row) && selectable
+                  ? {
+                      backgroundColor: "#DFDFDF"
+                    }
+                  : {}
+              }
+            >
               {row.map((cell, cellIndex) => (
                 <Td
                   key={`${rowIndex}_${cellIndex}`}

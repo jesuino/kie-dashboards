@@ -15,6 +15,10 @@
     {
       "key": "alertGood",
       "value": "5793455"
+    },
+    {
+      "key": "selectable",
+      "value": "truess"
     }
   ],
   "dataSet": {

@@ -24,11 +24,15 @@ interface Props {
 }
 export function FilteredTableComponent(props: Props) {
   const [dataset, setDataset] = useState<DataSet>();
+  const [filterColumn, setFilterColumn] = useState(0);
+  const [selectable, setSelectable] = useState<boolean>(false);
   const alerts = new Map<number, Alert>();
 
   useEffect(() => {
     props.controller.setOnInit((params: Map<string, any>) => {
       // init
+      const selectableParam = params.get("selectable") === "true";
+      const filterColumnParam = +params.get("filterColumn") || 0;
       const columnStr = params.get("alertColumn");
 
       if (columnStr && columnStr !== "") {
@@ -38,6 +42,9 @@ export function FilteredTableComponent(props: Props) {
           great: params.get("alertGreat")
         });
       }
+
+      setSelectable(selectableParam);
+      setFilterColumn(filterColumnParam);
     });
     props.controller.setOnDataSet((_dataset: DataSet) => {
       setDataset(_dataset);
@@ -68,7 +75,21 @@ export function FilteredTableComponent(props: Props) {
 
   return (
     <>
-      <FilteredTable columns={columns} rows={rows} alerts={alerts} />
+      <FilteredTable
+        columns={columns}
+        rows={rows}
+        alerts={alerts}
+        selectable={selectable}
+        onRowSelected={i => {
+          console.log(i);
+          if (i === -1) {
+            props.controller.filter({ reset: true, column: filterColumn, row: 0 });
+          } else {
+            props.controller.filter({ reset: true, column: filterColumn, row: 0 });
+            props.controller.filter({ reset: false, column: filterColumn, row: i });
+          }
+        }}
+      />
     </>
   );
 }
